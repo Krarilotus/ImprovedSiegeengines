@@ -1,0 +1,67 @@
+ai: 电脑玩家
+balance_changes: 平衡性调整
+bugfixes: 错误修复
+catapults_drop_destroyed: 放弃已摧毁的目标
+catapults_drop_destroyed_details: 默认开启。
+catapults_enabled: 改进目标搜索
+catapults_enabled_details: 默认开启。
+catapults_group: 远程攻城器械
+catapults_group_details: '电脑玩家的投石车和巨型投石机可在射程内停下开火。
+
+
+  散布（%，100 = 原版） — 默认值: 50.'
+catapults_on_the_way: 途中停下开火
+catapults_on_the_way_details: 默认开启。
+catapults_other_enemies: 攻击其他敌人
+catapults_other_enemies_details: 默认开启。
+catapults_scatter: 散布（%，100 = 原版）
+diagnostics_group: 诊断
+diagnostics_group_descr: 在 ucp3.log 中查看诊断信息。
+diagnostics_log: 记录决策
+diagnostics_log_details: 默认关闭。
+fixes: 修复
+improvements: 改进
+misc: 其他
+oil_aim: 只在空地泼油
+oil_aim_details: 默认开启。
+oil_amount: 每罐覆盖面积（格）
+oil_damage: 燃烧的沸油损伤建筑
+oil_damage_details: 默认开启。
+oil_group: 沸油
+oil_group_details: '沸油可落在可行走地面，并按地形蔓延。
+
+
+  每罐覆盖面积（格） — 默认值: 41.'
+oil_spread: 沸油随地形蔓延
+oil_spread_details: 默认开启。
+shields_enabled: 盾牌跟随己方部队
+shields_enabled_details: 默认开启。
+shields_group: 移动盾牌
+shields_group_descr: 电脑盾牌优先掩护填壕部队、远程士兵和远程攻城器械。
+tags.behavior: 行为
+tents_engineers: 帐篷入口受阻时重新指派工程师
+tents_engineers_details: 默认开启。
+tents_free: 重复使用安全帐篷点
+tents_free_details: 默认开启。
+tents_group: 攻城帐篷
+tents_group_details: '电脑玩家可重复使用安全的营地，并按武器射程选址。
+
+
+  额外靠近距离（格） — 默认值: 10.'
+tents_range: 按武器射程放置帐篷
+tents_range_details: 默认开启。
+tents_variation: 额外靠近距离（格）
+towers_ai_passengers: 电脑攻城塔搭载远程部队
+towers_ai_passengers_details: 默认开启。
+towers_dock: 允许连接更多城墙
+towers_dock_details: 默认开启。
+towers_group: 攻城塔
+towers_group_details: '攻城塔可连接更多城墙，最多搭载九名士兵。
+
+
+  乘员绘制高度（像素） — 默认值: 4.'
+towers_orders: 电脑攻城塔自行寻找连接点
+towers_orders_details: 默认开启。
+towers_passenger_lift: 乘员绘制高度（像素）
+towers_passengers: 允许步兵搭乘攻城塔
+towers_passengers_details: 默认开启。

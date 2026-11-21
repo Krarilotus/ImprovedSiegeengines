@@ -1,0 +1,67 @@
+ai: KI
+balance_changes: Balanceänderungen
+bugfixes: Fehlerbehebungen
+catapults_drop_destroyed: Zerstörte Ziele aufgeben
+catapults_drop_destroyed_details: Standardmäßig an.
+catapults_enabled: Bessere Zielsuche
+catapults_enabled_details: Standardmäßig an.
+catapults_group: Fernkampf-Belagerungsgeräte
+catapults_group_details: 'Katapulte und Triböcke der KI können in Reichweite anhalten und feuern.
+
+
+  Streuung (%, 100 = Original) — Standardwert: 50.'
+catapults_on_the_way: Unterwegs anhalten und feuern
+catapults_on_the_way_details: Standardmäßig an.
+catapults_other_enemies: Weitere Feinde angreifen
+catapults_other_enemies_details: Standardmäßig an.
+catapults_scatter: Streuung (%, 100 = Original)
+diagnostics_group: Diagnose
+diagnostics_group_descr: Für die Fehlersuche in ucp3.log.
+diagnostics_log: Entscheidungen protokollieren
+diagnostics_log_details: Standardmäßig aus.
+fixes: Korrekturen
+improvements: Verbesserungen
+misc: Sonstiges
+oil_aim: Öl nur auf freien Boden gießen
+oil_aim_details: Standardmäßig an.
+oil_amount: Fläche pro Öltopf (Felder)
+oil_damage: Brennendes Öl beschädigt Gebäude
+oil_damage_details: Standardmäßig an.
+oil_group: Pechöl
+oil_group_details: 'Öl kann nur auf begehbarem Boden landen und sich an das Gelände anpassen.
+
+
+  Fläche pro Öltopf (Felder) — Standardwert: 41.'
+oil_spread: Öl fließt dem Gelände entlang
+oil_spread_details: Standardmäßig an.
+shields_enabled: Schilde folgen eigenen Truppen
+shields_enabled_details: Standardmäßig an.
+shields_group: Tragbare Schilde
+shields_group_descr: KI-Schilde schützen zuerst Grabentrupps, Fernkämpfer und Fernkampf-Belagerungsgeräte.
+tags.behavior: Verhalten
+tents_engineers: Ingenieure bei blockiertem Zelt neu anweisen
+tents_engineers_details: Standardmäßig an.
+tents_free: Sichere Zeltplätze erneut nutzen
+tents_free_details: Standardmäßig an.
+tents_group: Belagerungszelte
+tents_group_details: 'Die KI verwendet sichere Zeltplätze erneut und kann die Waffenreichweite berücksichtigen.
+
+
+  Zusätzlicher Abstand nach innen (Felder) — Standardwert: 10.'
+tents_range: Zelte nach Waffenreichweite platzieren
+tents_range_details: Standardmäßig an.
+tents_variation: Zusätzlicher Abstand nach innen (Felder)
+towers_ai_passengers: KI-Türme nehmen Fernkämpfer mit
+towers_ai_passengers_details: Standardmäßig an.
+towers_dock: An mehr Mauern andocken
+towers_dock_details: Standardmäßig an.
+towers_group: Belagerungstürme
+towers_group_details: 'Belagerungstürme können an mehr Mauern andocken und bis zu neun Soldaten tragen.
+
+
+  Darstellungshöhe der Passagiere (Pixel) — Standardwert: 4.'
+towers_orders: KI-Türme suchen eigene Andockstellen
+towers_orders_details: Standardmäßig an.
+towers_passenger_lift: Darstellungshöhe der Passagiere (Pixel)
+towers_passengers: Infanterie auf Türmen mitnehmen
+towers_passengers_details: Standardmäßig an.

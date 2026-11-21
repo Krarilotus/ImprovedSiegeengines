@@ -1,0 +1,67 @@
+ai: ИИ
+balance_changes: Изменения баланса
+bugfixes: Исправления ошибок
+catapults_drop_destroyed: Сбрасывать уничтоженные цели
+catapults_drop_destroyed_details: По умолчанию включено.
+catapults_enabled: Улучшить поиск целей
+catapults_enabled_details: По умолчанию включено.
+catapults_group: Дальнобойные осадные машины
+catapults_group_details: 'Катапульты и требушеты ИИ могут остановиться и стрелять с дистанции.
+
+
+  Разброс (%, 100 = исходный) — Значение по умолчанию: 50.'
+catapults_on_the_way: Останавливаться и стрелять по пути
+catapults_on_the_way_details: По умолчанию включено.
+catapults_other_enemies: Атаковать других противников
+catapults_other_enemies_details: По умолчанию включено.
+catapults_scatter: Разброс (%, 100 = исходный)
+diagnostics_group: Диагностика
+diagnostics_group_descr: Для диагностики в ucp3.log.
+diagnostics_log: Записывать решения в журнал
+diagnostics_log_details: По умолчанию выключено.
+fixes: Исправления
+improvements: Улучшения
+misc: Разное
+oil_aim: Лить масло на открытый грунт
+oil_aim_details: По умолчанию включено.
+oil_amount: Площадь от одного горшка (клетки)
+oil_damage: Горящее масло повреждает здания
+oil_damage_details: По умолчанию включено.
+oil_group: Горящее масло
+oil_group_details: 'Масло может попадать на открытый грунт и растекаться с учётом рельефа.
+
+
+  Площадь от одного горшка (клетки) — Значение по умолчанию: 41.'
+oil_spread: Масло растекается по рельефу
+oil_spread_details: По умолчанию включено.
+shields_enabled: Щиты следуют за своими войсками
+shields_enabled_details: По умолчанию включено.
+shields_group: Переносные щиты
+shields_group_descr: Щиты ИИ в первую очередь прикрывают бойцов у рвов, стрелков и дальнобойные машины.
+tags.behavior: Поведение
+tents_engineers: Перенаправлять инженеров к заблокированным шатрам
+tents_engineers_details: По умолчанию включено.
+tents_free: Повторно использовать безопасные места
+tents_free_details: По умолчанию включено.
+tents_group: Осадные шатры
+tents_group_details: 'ИИ повторно использует безопасные места и может учитывать дальность машин.
+
+
+  Дополнительное приближение (клетки) — Значение по умолчанию: 10.'
+tents_range: Размещать шатры по дальности стрельбы
+tents_range_details: По умолчанию включено.
+tents_variation: Дополнительное приближение (клетки)
+towers_ai_passengers: Башни ИИ берут стрелков
+towers_ai_passengers_details: По умолчанию включено.
+towers_dock: Стыковаться с большим числом стен
+towers_dock_details: По умолчанию включено.
+towers_group: Осадные башни
+towers_group_details: 'Башни могут стыковаться с большим числом стен и везти до девяти бойцов.
+
+
+  Высота отображения бойцов (пиксели) — Значение по умолчанию: 4.'
+towers_orders: Башни ИИ сами ищут место стыковки
+towers_orders_details: По умолчанию включено.
+towers_passenger_lift: Высота отображения бойцов (пиксели)
+towers_passengers: Перевозить пехоту на башнях
+towers_passengers_details: По умолчанию включено.

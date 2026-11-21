@@ -1,0 +1,67 @@
+ai: YZ
+balance_changes: Denge değişiklikleri
+bugfixes: Hata düzeltmeleri
+catapults_drop_destroyed: Yok edilen hedefi bırak
+catapults_drop_destroyed_details: Varsayılan olarak açık.
+catapults_enabled: Hedef aramayı iyileştir
+catapults_enabled_details: Varsayılan olarak açık.
+catapults_group: Menzilli kuşatma makineleri
+catapults_group_details: 'YZ mancınıkları menzile girince durup ateş edebilir.
+
+
+  Saçılma (%, 100 = özgün) — Varsayılan değer: 50.'
+catapults_on_the_way: Yolda durup ateş et
+catapults_on_the_way_details: Varsayılan olarak açık.
+catapults_other_enemies: Diğer düşmanlara saldır
+catapults_other_enemies_details: Varsayılan olarak açık.
+catapults_scatter: Saçılma (%, 100 = özgün)
+diagnostics_group: Tanılama
+diagnostics_group_descr: ucp3.log ile hata ayıklamak için.
+diagnostics_log: Kararları günlüğe yaz
+diagnostics_log_details: Varsayılan olarak kapalı.
+fixes: Düzeltmeler
+improvements: İyileştirmeler
+misc: Diğer
+oil_aim: Yağı yalnızca açık zemine dök
+oil_aim_details: Varsayılan olarak açık.
+oil_amount: Kap başına alan (kare)
+oil_damage: Yanan yağ binalara zarar versin
+oil_damage_details: Varsayılan olarak açık.
+oil_group: Kızgın yağ
+oil_group_details: 'Yağ yürünebilir zemine dökülüp araziye göre yayılabilir.
+
+
+  Kap başına alan (kare) — Varsayılan değer: 41.'
+oil_spread: Yağ araziye göre yayılsın
+oil_spread_details: Varsayılan olarak açık.
+shields_enabled: Kalkanlar kendi birliklerini izlesin
+shields_enabled_details: Varsayılan olarak açık.
+shields_group: Taşınabilir kalkanlar
+shields_group_descr: YZ kalkanları önce hendek birliklerini ve menzilli birlikleri korur.
+tags.behavior: Davranış
+tents_engineers: Çadır engelliyse mühendisleri yönlendir
+tents_engineers_details: Varsayılan olarak açık.
+tents_free: Güvenli çadır yerlerini yeniden kullan
+tents_free_details: Varsayılan olarak açık.
+tents_group: Kuşatma çadırları
+tents_group_details: 'YZ güvenli yerleri yeniden kullanabilir ve silah menzilini hesaba katabilir.
+
+
+  Hedefe ek yaklaşım (kare) — Varsayılan değer: 10.'
+tents_range: Çadırı silah menziline göre kur
+tents_range_details: Varsayılan olarak açık.
+tents_variation: Hedefe ek yaklaşım (kare)
+towers_ai_passengers: YZ kuleleri menzilli birlik taşısın
+towers_ai_passengers_details: Varsayılan olarak açık.
+towers_dock: Daha fazla duvara yanaş
+towers_dock_details: Varsayılan olarak açık.
+towers_group: Kuşatma kuleleri
+towers_group_details: 'Kuleler daha fazla duvara yanaşabilir ve dokuz askere kadar taşıyabilir.
+
+
+  Yolcu çizim yüksekliği (piksel) — Varsayılan değer: 4.'
+towers_orders: YZ kuleleri yanaşacak yer arasın
+towers_orders_details: Varsayılan olarak açık.
+towers_passenger_lift: Yolcu çizim yüksekliği (piksel)
+towers_passengers: Kuleler piyade taşısın
+towers_passengers_details: Varsayılan olarak açık.

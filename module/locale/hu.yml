@@ -1,0 +1,67 @@
+ai: MI
+balance_changes: Egyensúlyváltozások
+bugfixes: Hibajavítások
+catapults_drop_destroyed: Megsemmisült célok elengedése
+catapults_drop_destroyed_details: Alapértelmezésben be van kapcsolva.
+catapults_enabled: Jobb célkeresés
+catapults_enabled_details: Alapértelmezésben be van kapcsolva.
+catapults_group: Távolsági ostromgépek
+catapults_group_details: 'Az MI katapultjai és ostromhajítói lőtávon belül megállhatnak és tüzelhetnek.
+
+
+  Szórás (%, 100 = eredeti) — Alapérték: 50.'
+catapults_on_the_way: Útközbeni megállás és tüzelés
+catapults_on_the_way_details: Alapértelmezésben be van kapcsolva.
+catapults_other_enemies: Más ellenségek támadása
+catapults_other_enemies_details: Alapértelmezésben be van kapcsolva.
+catapults_scatter: Szórás (%, 100 = eredeti)
+diagnostics_group: Diagnosztika
+diagnostics_group_descr: Hibakereséshez az ucp3.log fájlban.
+diagnostics_log: Döntések naplózása
+diagnostics_log_details: Alapértelmezésben ki van kapcsolva.
+fixes: Javítások
+improvements: Fejlesztések
+misc: Egyéb
+oil_aim: Olaj öntése csak szabad talajra
+oil_aim_details: Alapértelmezésben be van kapcsolva.
+oil_amount: Terület olajos edényenként (mező)
+oil_damage: Az égő olaj kárt tesz az épületekben
+oil_damage_details: Alapértelmezésben be van kapcsolva.
+oil_group: Forró olaj
+oil_group_details: 'Az olaj járható talajra célozható, és a terephez igazodva terjedhet.
+
+
+  Terület olajos edényenként (mező) — Alapérték: 41.'
+oil_spread: Az olaj a terepet követi
+oil_spread_details: Alapértelmezésben be van kapcsolva.
+shields_enabled: A pajzsok követik saját egységeiket
+shields_enabled_details: Alapértelmezésben be van kapcsolva.
+shields_group: Hordozható pajzsok
+shields_group_descr: Az MI pajzsai elsősorban az ároknál dolgozókat és a távolsági egységeket védik.
+tags.behavior: Viselkedés
+tents_engineers: Mérnökök átirányítása elzárt sátornál
+tents_engineers_details: Alapértelmezésben be van kapcsolva.
+tents_free: Biztonságos sátorhelyek újrahasználata
+tents_free_details: Alapértelmezésben be van kapcsolva.
+tents_group: Ostromsátrak
+tents_group_details: 'Az MI újra használhatja a biztonságos helyeket és figyelembe veheti a lőtávot.
+
+
+  További közelítés (mező) — Alapérték: 10.'
+tents_range: Sátrak elhelyezése lőtáv szerint
+tents_range_details: Alapértelmezésben be van kapcsolva.
+tents_variation: További közelítés (mező)
+towers_ai_passengers: Az MI tornyai lövészeket szállítanak
+towers_ai_passengers_details: Alapértelmezésben be van kapcsolva.
+towers_dock: Csatlakozás több falszakaszhoz
+towers_dock_details: Alapértelmezésben be van kapcsolva.
+towers_group: Ostromtornyok
+towers_group_details: 'A tornyok több falszakaszhoz illeszkedhetnek, és legfeljebb kilenc katonát vihetnek.
+
+
+  Utasok megjelenítési magassága (képpont) — Alapérték: 4.'
+towers_orders: Az MI tornyai illeszkedési helyet keresnek
+towers_orders_details: Alapértelmezésben be van kapcsolva.
+towers_passenger_lift: Utasok megjelenítési magassága (képpont)
+towers_passengers: Gyalogság szállítása a tornyokon
+towers_passengers_details: Alapértelmezésben be van kapcsolva.

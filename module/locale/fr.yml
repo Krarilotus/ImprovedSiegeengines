@@ -1,0 +1,67 @@
+ai: IA
+balance_changes: Équilibrage
+bugfixes: Corrections de bugs
+catapults_drop_destroyed: Abandonner les cibles détruites
+catapults_drop_destroyed_details: Activé par défaut.
+catapults_enabled: Améliorer la recherche de cibles
+catapults_enabled_details: Activé par défaut.
+catapults_group: Engins de siège à distance
+catapults_group_details: 'Les catapultes et trébuchets de l’IA peuvent s’arrêter et tirer à portée.
+
+
+  Dispersion (%, 100 = jeu d’origine) — Valeur par défaut: 50.'
+catapults_on_the_way: S’arrêter et tirer en chemin
+catapults_on_the_way_details: Activé par défaut.
+catapults_other_enemies: Attaquer d’autres ennemis
+catapults_other_enemies_details: Activé par défaut.
+catapults_scatter: Dispersion (%, 100 = jeu d’origine)
+diagnostics_group: Diagnostic
+diagnostics_group_descr: Pour le dépannage dans ucp3.log.
+diagnostics_log: Journaliser les décisions
+diagnostics_log_details: Désactivé par défaut.
+fixes: Correctifs
+improvements: Améliorations
+misc: Divers
+oil_aim: Verser l’huile uniquement sur le sol libre
+oil_aim_details: Activé par défaut.
+oil_amount: Surface par pot (cases)
+oil_damage: L’huile en feu endommage les bâtiments
+oil_damage_details: Activé par défaut.
+oil_group: Huile bouillante
+oil_group_details: 'L’huile peut viser le sol praticable et se répandre selon le terrain.
+
+
+  Surface par pot (cases) — Valeur par défaut: 41.'
+oil_spread: L’huile suit le terrain
+oil_spread_details: Activé par défaut.
+shields_enabled: Les boucliers suivent leurs troupes
+shields_enabled_details: Activé par défaut.
+shields_group: Boucliers portatifs
+shields_group_descr: Les boucliers de l’IA protègent en priorité les troupes aux douves et les unités de tir.
+tags.behavior: Comportement
+tents_engineers: Rediriger les ingénieurs si la tente est bloquée
+tents_engineers_details: Activé par défaut.
+tents_free: Réutiliser les emplacements sûrs
+tents_free_details: Activé par défaut.
+tents_group: Tentes de siège
+tents_group_details: 'L’IA réutilise les emplacements sûrs et peut tenir compte de la portée des engins.
+
+
+  Marge vers la cible (cases) — Valeur par défaut: 10.'
+tents_range: Placer les tentes selon la portée
+tents_range_details: Activé par défaut.
+tents_variation: Marge vers la cible (cases)
+towers_ai_passengers: Les tours de l’IA embarquent les unités à distance
+towers_ai_passengers_details: Activé par défaut.
+towers_dock: S’arrimer à plus de murs
+towers_dock_details: Activé par défaut.
+towers_group: Tours de siège
+towers_group_details: 'Les tours peuvent s’arrimer à plus de murs et transporter jusqu’à neuf soldats.
+
+
+  Hauteur d’affichage des passagers (pixels) — Valeur par défaut: 4.'
+towers_orders: Les tours de l’IA recherchent leur point d’accès
+towers_orders_details: Activé par défaut.
+towers_passenger_lift: Hauteur d’affichage des passagers (pixels)
+towers_passengers: Transporter l’infanterie sur les tours
+towers_passengers_details: Activé par défaut.

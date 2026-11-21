@@ -1,0 +1,67 @@
+ai: هوش مصنوعی
+balance_changes: تغییرات تعادل
+bugfixes: رفع اشکال
+catapults_drop_destroyed: رها کردن اهداف نابودشده
+catapults_drop_destroyed_details: به‌طور پیش‌فرض روشن است.
+catapults_enabled: بهبود یافتن هدف
+catapults_enabled_details: به‌طور پیش‌فرض روشن است.
+catapults_group: ادوات محاصره دوربرد
+catapults_group_details: 'منجنیق‌ها و فلاخن‌های هوش مصنوعی در برد خود می‌ایستند و شلیک می‌کنند.
+
+
+  پراکندگی (٪، ۱۰۰ = اصلی) — مقدار پیش‌فرض: 50.'
+catapults_on_the_way: توقف و شلیک در مسیر
+catapults_on_the_way_details: به‌طور پیش‌فرض روشن است.
+catapults_other_enemies: حمله به دشمنان دیگر
+catapults_other_enemies_details: به‌طور پیش‌فرض روشن است.
+catapults_scatter: پراکندگی (٪، ۱۰۰ = اصلی)
+diagnostics_group: عیب‌یابی
+diagnostics_group_descr: برای عیب‌یابی در ucp3.log.
+diagnostics_log: ثبت تصمیم‌ها
+diagnostics_log_details: به‌طور پیش‌فرض خاموش است.
+fixes: اصلاحات
+improvements: بهبودها
+misc: متفرقه
+oil_aim: ریختن روغن فقط روی زمین باز
+oil_aim_details: به‌طور پیش‌فرض روشن است.
+oil_amount: مساحت هر ظرف روغن (خانه)
+oil_damage: روغن شعله‌ور به ساختمان‌ها آسیب بزند
+oil_damage_details: به‌طور پیش‌فرض روشن است.
+oil_group: روغن داغ
+oil_group_details: 'روغن می‌تواند روی زمین قابل‌عبور بریزد و متناسب با زمین پخش شود.
+
+
+  مساحت هر ظرف روغن (خانه) — مقدار پیش‌فرض: 41.'
+oil_spread: روغن مطابق زمین پخش شود
+oil_spread_details: به‌طور پیش‌فرض روشن است.
+shields_enabled: سپرها نیروهای خودی را دنبال کنند
+shields_enabled_details: به‌طور پیش‌فرض روشن است.
+shields_group: سپرهای قابل‌حمل
+shields_group_descr: سپرهای هوش مصنوعی ابتدا از نیروهای خندق و واحدهای دوربرد محافظت می‌کنند.
+tags.behavior: رفتار
+tents_engineers: هدایت دوباره مهندسان هنگام مسدودی چادر
+tents_engineers_details: به‌طور پیش‌فرض روشن است.
+tents_free: استفاده دوباره از جای امن چادر
+tents_free_details: به‌طور پیش‌فرض روشن است.
+tents_group: چادرهای محاصره
+tents_group_details: 'هوش مصنوعی جای امن چادر را دوباره به کار می‌گیرد و برد سلاح را در نظر می‌گیرد.
+
+
+  فاصله نزدیک‌شدن اضافه (خانه) — مقدار پیش‌فرض: 10.'
+tents_range: جانمایی چادر بر اساس برد سلاح
+tents_range_details: به‌طور پیش‌فرض روشن است.
+tents_variation: فاصله نزدیک‌شدن اضافه (خانه)
+towers_ai_passengers: برج‌های هوش مصنوعی نیروهای دوربرد حمل کنند
+towers_ai_passengers_details: به‌طور پیش‌فرض روشن است.
+towers_dock: اتصال به دیوارهای بیشتر
+towers_dock_details: به‌طور پیش‌فرض روشن است.
+towers_group: برج‌های محاصره
+towers_group_details: 'برج‌ها به دیوارهای بیشتری متصل می‌شوند و تا نه سرباز حمل می‌کنند.
+
+
+  ارتفاع نمایش سرنشینان (پیکسل) — مقدار پیش‌فرض: 4.'
+towers_orders: برج‌های هوش مصنوعی محل اتصال پیدا کنند
+towers_orders_details: به‌طور پیش‌فرض روشن است.
+towers_passenger_lift: ارتفاع نمایش سرنشینان (پیکسل)
+towers_passengers: حمل پیاده‌نظام روی برج‌ها
+towers_passengers_details: به‌طور پیش‌فرض روشن است.

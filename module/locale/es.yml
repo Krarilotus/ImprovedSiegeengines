@@ -1,0 +1,67 @@
+ai: IA
+balance_changes: Cambios de equilibrio
+bugfixes: Corrección de errores
+catapults_drop_destroyed: Descartar objetivos destruidos
+catapults_drop_destroyed_details: Activado por defecto.
+catapults_enabled: Mejorar la búsqueda de objetivos
+catapults_enabled_details: Activado por defecto.
+catapults_group: Máquinas de asedio a distancia
+catapults_group_details: 'Las catapultas y trabuquetes de la IA pueden detenerse y disparar desde su alcance.
+
+
+  Dispersión (%, 100 = original) — Valor predeterminado: 50.'
+catapults_on_the_way: Parar y disparar en camino
+catapults_on_the_way_details: Activado por defecto.
+catapults_other_enemies: Atacar a otros enemigos
+catapults_other_enemies_details: Activado por defecto.
+catapults_scatter: Dispersión (%, 100 = original)
+diagnostics_group: Diagnóstico
+diagnostics_group_descr: Para diagnosticar problemas en ucp3.log.
+diagnostics_log: Registrar decisiones
+diagnostics_log_details: Desactivado por defecto.
+fixes: Correcciones
+improvements: Mejoras
+misc: Varios
+oil_aim: Verter aceite solo en suelo libre
+oil_aim_details: Activado por defecto.
+oil_amount: Área por olla (casillas)
+oil_damage: El aceite en llamas daña edificios
+oil_damage_details: Activado por defecto.
+oil_group: Aceite hirviendo
+oil_group_details: 'El aceite puede caer en terreno transitable y extenderse según el relieve.
+
+
+  Área por olla (casillas) — Valor predeterminado: 41.'
+oil_spread: El aceite sigue el terreno
+oil_spread_details: Activado por defecto.
+shields_enabled: Los escudos siguen a sus tropas
+shields_enabled_details: Activado por defecto.
+shields_group: Escudos portátiles
+shields_group_descr: Los escudos de la IA protegen primero a las tropas del foso y a las unidades a distancia.
+tags.behavior: Comportamiento
+tents_engineers: Redirigir ingenieros si la tienda está bloqueada
+tents_engineers_details: Activado por defecto.
+tents_free: Reutilizar sitios seguros
+tents_free_details: Activado por defecto.
+tents_group: Tiendas de asedio
+tents_group_details: 'La IA reutiliza sitios seguros y puede considerar el alcance de sus armas.
+
+
+  Acercamiento adicional (casillas) — Valor predeterminado: 10.'
+tents_range: Colocar tiendas según el alcance
+tents_range_details: Activado por defecto.
+tents_variation: Acercamiento adicional (casillas)
+towers_ai_passengers: Las torres de la IA llevan tropas a distancia
+towers_ai_passengers_details: Activado por defecto.
+towers_dock: Acoplarse a más muros
+towers_dock_details: Activado por defecto.
+towers_group: Torres de asedio
+towers_group_details: 'Las torres pueden acoplarse a más muros y llevar hasta nueve soldados.
+
+
+  Altura visual de pasajeros (píxeles) — Valor predeterminado: 4.'
+towers_orders: Las torres de la IA buscan dónde acoplarse
+towers_orders_details: Activado por defecto.
+towers_passenger_lift: Altura visual de pasajeros (píxeles)
+towers_passengers: Transportar infantería en las torres
+towers_passengers_details: Activado por defecto.
