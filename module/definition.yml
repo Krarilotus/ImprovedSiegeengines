@@ -1,7 +1,9 @@
 name: improved-siegeengines
 display-name: Improved Siegeengines
 type: module
-version: 1.0.21
+version: 1.0.28
 author: Monsterfish
+dependencies:
+  map-extensions: ^1.0.0
 meta:
   version: 1.0.12

@@ -115,6 +115,33 @@ options:
     contents:
       type: boolean
       value: true
+  - url: improved-siegeengines.towers.passengers
+    name: improved-siegeengines-towers-passengers
+    text: '{{towers_passengers}}'
+    tooltip: '{{towers_passengers_tooltip}}'
+    display: Switch
+    contents:
+      type: boolean
+      value: true
+  - url: improved-siegeengines.towers.ai_passengers
+    name: improved-siegeengines-towers-ai-passengers
+    text: '{{towers_ai_passengers}}'
+    tooltip: '{{towers_ai_passengers_tooltip}}'
+    display: Switch
+    contents:
+      type: boolean
+      value: true
+  - url: improved-siegeengines.towers.passenger_lift
+    name: improved-siegeengines-towers-passenger-lift
+    text: '{{towers_passenger_lift}}'
+    tooltip: '{{towers_passenger_lift_tooltip}}'
+    display: Number
+    contents:
+      type: integer
+      value: 4
+      min: -40
+      max: 80
+      step: 2
 
 - display: GroupBox
   category: [Improved Siegeengines]

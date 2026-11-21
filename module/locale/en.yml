@@ -100,6 +100,25 @@ towers_orders_tooltip: |
   a randomly picked ranged troop of the attacking army, and only when none of those are left
   the backup troops.
 
+towers_passengers: Foot soldiers ride on siege towers
+towers_passengers_tooltip: |
+  Select foot soldiers and point at one of your siege towers: the arrows for manning an engine
+  show, and a click sends them over. Up to 9 climb on top as they reach it and ride along -
+  archers and crossbowmen shoot from there even while the tower rolls. Up there they are as safe
+  as on a docked tower: arrows from below do a third of the damage and swords cannot reach them.
+  They cannot be selected while they ride. When the tower docks at a wall they stand on the
+  docked tower and go on from there; when it is destroyed they die with it. Select the tower and
+  point at it for the arrows to leave an engine: the first click puts the passengers down around
+  it, the next one the engineers, as before.
+towers_passenger_lift: Passengers drawn higher by (pixels)
+towers_passenger_lift_tooltip: |
+  Only where the passengers are drawn: raise this if they look like they stand below the top
+  deck of a moving siege tower, lower it if they float above it. Their real height - and with
+  it how well arrows from below and swords reach them - is the docked tower's either way.
+towers_ai_passengers: AI siege towers take on ranged troops
+towers_ai_passengers_tooltip: |
+  An AI siege tower takes on its own archers, crossbowmen, slingers and fire throwers that stand
+  within 3 tiles of it, up to 9, and carries them to the wall.
 shields_group: Portable shields
 shields_group_descr: |
   AI portable shields in the unmodified game only ever follow the backup troops, at most

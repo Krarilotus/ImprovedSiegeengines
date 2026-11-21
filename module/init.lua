@@ -34,6 +34,9 @@
      shields than places are spread evenly; with nobody to walk with they wait.
 
   Only the AI's siege engines are changed, except the docking in 3, which every tower uses.
+
+  5. Siege tower passengers (riders.lua): foot soldiers ride on top of a siege tower, up to 9,
+     shooting from there while it rolls; AI towers take on their own ranged troops close by.
 ]]
 
 local templates = require("templates")
@@ -44,7 +47,7 @@ local DEFAULTS = {
   catapults = { enabled = true, on_the_way = true, other_enemies = true, scatter = 50,
     drop_destroyed = true },
   tents = { free = true, range = true, variation = 10, engineers = true },
-  towers = { dock = true, orders = true },
+  towers = { dock = true, orders = true, passengers = true, ai_passengers = true, passenger_lift = 4 },
   shields = { enabled = true },
   oil = { aim = true, spread = true, amount = 41, damage = true },
   diagnostics = { log = false },
@@ -1272,6 +1275,8 @@ return {
     O.variation = number(config, "tents", "variation", 0, 30)
     O.dock = setting(config, "towers", "dock")
     O.towerOrders = setting(config, "towers", "orders")
+    O.passengers = setting(config, "towers", "passengers")
+    O.aiPassengers = setting(config, "towers", "ai_passengers")
     O.shields = setting(config, "shields", "enabled")
     O.engineers = setting(config, "tents", "engineers")
     O.log = setting(config, "diagnostics", "log")
@@ -1280,7 +1285,8 @@ return {
     O.oilAmount = number(config, "oil", "amount", 5, 200)
     O.oilDamage = setting(config, "oil", "damage")
     if not (O.catapults or O.freeSpots or O.tentRange or O.dock or O.towerOrders or O.shields
-        or O.engineers or O.standing or O.scatter < 100 or O.oilAim or O.oilSpread) then
+        or O.engineers or O.standing or O.scatter < 100 or O.oilAim or O.oilSpread
+        or O.passengers or O.aiPassengers) then
       return
     end
     if not try("the whole module", readCommon) then return end
@@ -1296,6 +1302,16 @@ return {
     state.oil = (O.oilAim or O.oilSpread) and try("the oil engineers", enableOil)
     state.commands = (O.towerOrders or O.shields or O.engineers)
       and try("shield, siege tower and engineer orders", enableCommands)
+    state.riders = (O.passengers or O.aiPassengers) and try("siege tower passengers", function()
+      require("riders").enable({ G = G, rd32 = rd32, wr32 = wr32, scan = scan, expectBytes = expectBytes,
+        operand = operand, callTarget = callTarget, assemble = assemble, patch = patch,
+        jumpCode = jumpCode, player = O.passengers, ai = O.aiPassengers, maxTribes = MAX_TRIBES,
+        lift = number(config, "towers", "passenger_lift", -40, 80),
+        playerStride = P.STRIDE, aiType = G.players + P.AI_TYPE,
+        aob = { updateCall = AOB_UPDATE_CALL, updateTable = UPDATE_TABLE, currentAt = UPDATE_CURRENT_AT,
+          instruction = AOB_INSTRUCTION, moveCommand = OILAT.AOB_MOVE_COMMAND,
+          localPlayer = OILAT.MOVE_LOCAL_PLAYER } })
+    end)
 
     wr32(G.data + 0x00, state.catapults and 1 or 0)
     wr32(G.data + 0x04, (state.tents and O.freeSpots) and 1 or 0)
@@ -1309,6 +1325,8 @@ return {
     state.engineers = state.commands and O.engineers
 
     local function word(on, ready) return not on and "off" or ready and "on" or "unavailable" end
+    log(INFO, string.format("%s: siege tower passengers: player %s, AI %s", MODULE_NAME,
+      word(O.passengers, state.riders), word(O.aiPassengers, state.riders)))
     log(INFO, string.format("%s: oil aim %s, oil spread %s (%d tiles, building damage %s)", MODULE_NAME,
       word(O.oilAim, state.oil), word(O.oilSpread, state.oil), O.oilAmount, O.oilDamage and "on" or "off"))
     log(INFO, string.format("%s: catapults %s, shooting on the way %s, other enemies %s, scatter %s, "
@@ -1331,6 +1349,7 @@ return {
       wr32(G.data + 0x1F0, 0)
     end
     O.shields, O.towerOrders, O.engineers = false, false, false
+    if package.loaded["riders"] then require("riders").disable() end
     if G.oil ~= nil then
       for offset = 0x00, 0x0C, 4 do wr32(G.oil + offset, 0) end
     end

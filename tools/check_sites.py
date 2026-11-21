@@ -25,6 +25,17 @@ for k, off, bytes_ in re.findall(r'(?:local |^\s+)(\w+) = \{ (0x[0-9A-F]+), \{ (
 BYTES = {k: [int(b, 16) for b in v.split(',')] for k, v in
          re.findall(r'local (\w+) = \{ (0x[0-9A-F]{2}(?:, 0x[0-9A-F]{2})+) \}', src)}
 
+# riders.lua: the siege tower passengers' sites
+rsrc = open(os.path.join(HERE, 'module', 'riders.lua'), encoding='utf-8').read()
+RAOB = dict(re.findall(r'local (AOB_\w+) = "([^"]+)"', rsrc))
+def rnum(k): return int(re.search(r'\b%s = (-?0x[0-9A-Fa-f]+)' % k, rsrc).group(1), 16)
+def rsite(k):
+    m = re.search(r'\b%s = \{ (-?0x[0-9A-F]+), \{ ([^}]*) \}' % k, rsrc)
+    return int(m.group(1), 16), [int(x, 16) for x in m.group(2).split(',')]
+def rbytes(k):
+    m = re.search(r'\b%s = \{ ((?:0x[0-9A-F]{2},?\s*)+)\}' % k, rsrc)
+    return [int(x, 16) for x in m.group(1).split(',') if x.strip()]
+
 class Exe:
     def __init__(self, path):
         pe = pefile.PE(path, fast_load=True)
@@ -147,6 +158,49 @@ def check(name, e):
     speech = call(mv + NUM['MOVE_SPEECH'], 'speech')
     dmg = scan('AOB_BUILDING_DAMAGE')
     print('         oil: fire %X speech %X damage %X' % (fire, speech, dmg))
+    # siege tower passengers
+    o = scan('AOB_INSTRUCTION')
+    io, ib = rsite('INDEX'); expect(o + io, ib, 'INSTR.INDEX'); index = e.u32(o + io + len(ib))
+    to, tb = rsite('TABLE'); expect(o + to, tb, 'INSTR.TABLE'); cases = e.u32(o + to + len(tb))
+    man = e.u32(cases + 4 * e.b(index + 0x10 - 3, 1)[0])
+    leave = e.u32(cases + 4 * e.b(index + 0x11 - 3, 1)[0])
+    expect(man, rbytes('MAN_START'), 'MAN_START'); expect(leave, rbytes('LEAVE_START'), 'LEAVE_START')
+    rc = {}
+    for k in ('MAN_MEMBER', 'MAN_DESTINATION', 'MAN_DESELECT', 'MAN_UNSELECT'):
+        rc[k] = call(man + rnum(k), k)
+    for k in ('LEAVE_FIND', 'LEAVE_MICRO', 'LEAVE_RESET', 'LEAVE_STOP'):
+        rc[k] = call(leave + rnum(k), k)
+    for k in ('LEAVE_OFFSETS', 'LEAVE_PF', 'LEAVE_TILE', 'LEAVE_X', 'LEAVE_Y', 'LEAVE_HEIGHT'):
+        off, bytes_ = rsite(k); expect(leave + off, bytes_, k); rc[k] = e.u32(leave + off + len(bytes_))
+    expect(rc['LEAVE_RESET'] + rnum('UNLINK_AT'), rbytes('UNLINK_START'), 'UNLINK_START')
+    need(rc['MAN_DESTINATION'] == call(scan('AOB_UPDATE_CATAPULT') + NUM['CATAPULT_SET_DESTINATION'], 'sd'),
+         name + ' setDestinationForUnit differs')
+    hits = e.scan(RAOB['AOB_STANDING']); need(len(hits) == 1, '%s AOB_STANDING: %d hits' % (name, len(hits)))
+    hov = e.scan(RAOB['AOB_HOVER']); need(len(hov) == 1, '%s AOB_HOVER: %d hits' % (name, len(hov)))
+    if hov:
+        for k, value in (('HOVER_MAN', 3), ('HOVER_LEAVE', 4)):
+            m = re.search(r'\b%s = \{ (-?0x[0-9A-F]+), \{ ([^}]*) \}, (\d+) \}' % k, rsrc)
+            at = hov[0] + int(m.group(1), 16)
+            expect(at, [int(x, 16) for x in m.group(2).split(',')], k)
+            need(e.u32(at + 6) == int(m.group(3)) == value, name + ' ' + k + ' order value')
+    if hov:
+        ro, rb = rsite('HOVER_REACH'); expect(hov[0] + ro, rb, 'HOVER_REACH')
+    ts = e.scan(RAOB['AOB_TYPE_SELECT']); need(len(ts) == 1, '%s AOB_TYPE_SELECT: %d hits' % (name, len(ts)))
+    gs = e.scan(RAOB['AOB_GROUP_SELECT']); need(len(gs) == 1, '%s AOB_GROUP_SELECT: %d hits' % (name, len(gs)))
+    if gs:
+        go, gb = rsite('GROUP_NEXT'); expect(gs[0] + go, gb, 'GROUP_NEXT')
+    fh = e.scan(RAOB['AOB_FLAT_HEIGHT']); need(len(fh) == 1, '%s AOB_FLAT_HEIGHT: %d hits' % (name, len(fh)))
+    if fh:
+        fo, fb = rsite('FLAT_HEIGHT'); expect(fh[0] + fo, fb, 'FLAT_HEIGHT')
+        need(e.u32(fh[0] + fo + 3) == first - 0x490 - 0x8E + 0xBC, name + ' flattened view unit height operand')
+    sh = e.scan(RAOB['AOB_SHIFT']); need(len(sh) == 1, '%s AOB_SHIFT: %d hits' % (name, len(sh)))
+    st = e.scan(RAOB['AOB_STUCK']); need(len(st) == 1, '%s AOB_STUCK: %d hits' % (name, len(st)))
+    if st: need(e.u32(st[0] + 4) == flags - 0x165160 + 0x363ED0, name + ' stuck test area map')
+    dv = e.scan(RAOB['AOB_DRAW_VANISH']); need(len(dv) == 1, '%s AOB_DRAW_VANISH: %d hits' % (name, len(dv)))
+    if dv:
+        need(e.u32(dv[0] + 2) == first - 0x490 - 0x8E + 0x68, name + ' draw vanish operand')
+    print('         riders: man %X leave %X hover %X standing %X reset %X offsets %X' %
+          (man, leave, hov[0] if hov else 0, hits[0] if hits else 0, rc['LEAVE_RESET'], rc['LEAVE_OFFSETS']))
     print('%-8s harass %X tents %X/%X spots %X found %X location %X command %X freeTile %X' %
           (name, harass, angle, suit, find, found, location, cmd, free))
     print('         tribes %X stride %X units %X maxUnits %d ranges %s teams %X ticks %X flags %X' %

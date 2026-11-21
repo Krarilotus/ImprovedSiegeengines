@@ -67,6 +67,13 @@ the army like a big shield until there is - with
 the patrol troops, else the siege defence, else the main army, else a randomly picked ranged
 troop of the attacking army, and only when none of those are left the backup troops.
 
+**Foot soldiers ride on siege towers.** Select foot soldiers and point at one of your siege
+towers: a click sends them over and up to 9 climb on top, riding along and - archers and the
+like - shooting while the tower rolls, as safe up there as on a docked tower. They cannot be
+selected while they ride. They die with the tower, or stand on it once it docks. Select the
+tower and point at it: the first click puts the passengers down, the next one the engineers.
+AI towers take on their own ranged troops standing within 3 tiles of them.
+
 **Shields walk with their own troops.** AI shields go to the moat fillers, the attacking army's
 ranged siege engines (never the ones defending the AI's own castle) and its ranged troops,
 spread evenly over them. The backup troops only get shields once none of those are left; with
