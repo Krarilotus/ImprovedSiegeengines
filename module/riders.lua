@@ -653,8 +653,14 @@ T.pin = [[
   cmp word [UNITS + 0x2A0 + ebx], 0
   jne .out
   movzx ebp, word [RIDE + esi + 4]
+  test ebp, ebp
+  jz .out
+  cmp ebp, MAXUNITS
+  jae .out
   imul ebp, ebp, 0x490
   movzx ecx, byte [RIDE + esi + 7]
+  cmp ecx, 9
+  jae .out
   movsx eax, word [SLOTS + ecx*4]
   movsx edx, word [SLOTS + ecx*4 + 2]
   movzx ecx, word [UNITS + 0xB6 + ebp]
@@ -1077,6 +1083,10 @@ T.standing = [[
   cmp word [UNITS + 0x2A0 + eax], 0
   jne .done
   movzx edx, word [RIDE + ecx + 4]
+  test edx, edx
+  jz .done
+  cmp edx, MAXUNITS
+  jae .done
   imul edx, edx, 0x490
   mov cx, [UNITS + 0xBA + edx]
   mov [UNITS + 0xBA + eax], cx
@@ -1185,6 +1195,10 @@ T.drawVanish = [[
   mov edx, [UNITS + 0xD4 + esi]
   call .gate
   movzx edx, word [RIDE + eax + 4]
+  test edx, edx
+  jz .done
+  cmp edx, MAXUNITS
+  jae .done
   imul edx, edx, 0x490
   mov edx, [UNITS + 0xD4 + edx]
   call .gate
