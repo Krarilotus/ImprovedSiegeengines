@@ -1370,7 +1370,7 @@ function riders.enable(env)
       for unit = 1, G.maxUnits - 1 do
         local at = ride + unit * RECORD
         if byte(at + 6) ~= 0 then
-          parts[#parts + 1] = string.pack("<I2", unit) .. core.readString(at, RECORD)
+          parts[#parts + 1] = string.pack("<I2", unit) .. string.char(table.unpack(core.readBytes(at, RECORD)))
         end
       end
       handle:put(SAVE_KEY, table.concat(parts))
@@ -1381,13 +1381,14 @@ function riders.enable(env)
       if not handle:exists(SAVE_KEY) then return end
       local data = handle:get(SAVE_KEY)
       for offset = 1, #data - RECORD - 1, RECORD + 2 do
-        local unit = string.unpack("<I2", data, offset)
-        if unit > 0 and unit < G.maxUnits then
+        local unit, _, tower, mode, place = string.unpack("<I2I4I2BB", data, offset)
+        if unit > 0 and unit < G.maxUnits and tower > 0 and tower < G.maxUnits
+            and unit ~= tower and (mode == 1 or mode == 2) and place < 9 then
           local at = ride + unit * RECORD
-          core.writeString(at, data:sub(offset + 2, offset + 1 + RECORD))
-          local tower, place = core.readSmallInteger(at + 4) & 0xFFFF, byte(at + 7)
-          if byte(at + 6) == 2 and tower < G.maxUnits and place < 9 then
-            core.writeSmallInteger(tslot + 2 * (tower * 9 + place), unit)
+          local seat = tslot + 2 * (tower * 9 + place)
+          if byte(at + 6) == 0 and (mode == 1 or core.readSmallInteger(seat) == 0) then
+            core.writeBytes(at, { data:byte(offset + 2, offset + 1 + RECORD) })
+            if mode == 2 then core.writeSmallInteger(seat, unit) end
           end
         end
       end
