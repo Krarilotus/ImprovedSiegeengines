@@ -131,6 +131,14 @@ options:
     contents:
       type: boolean
       value: true
+  - url: improved-siegeengines.towers.passenger_slow
+    name: improved-siegeengines-towers-passenger-slow
+    text: '{{towers_passenger_slow}}'
+    tooltip: '{{towers_passenger_slow_tooltip}}'
+    display: Switch
+    contents:
+      type: boolean
+      value: true
   - url: improved-siegeengines.towers.passenger_lift
     name: improved-siegeengines-towers-passenger-lift
     text: '{{towers_passenger_lift}}'

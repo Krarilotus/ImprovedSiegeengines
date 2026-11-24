@@ -41,6 +41,10 @@ local AI_RANGED = { 22, 23, 70, 72, 76 }
 -- The 3x3 places, in micro units from the tower (8 to a tile), in the order they fill up: half
 -- a tile apart, which keeps all nine on the moving tower's top deck (its sprite's deck is about
 -- 80 by 30 pixels, 118 above the ground point - the docked tower's height).
+local HALF_FULL = 5          -- passengers (of 9) from which a tower is one speed step slower
+-- setUnitValues: a unit's speed from the table by unit type (read live, so balance changes count).
+local AOB_SPEED = "0F B7 04 BD ? ? ? ? 33 D2 66 89 86 60 09 00 00"
+-- All riders stand on the tower's own tile and point; the places are only where they are drawn.
 local PLACES = { { -4, -4 }, { 0, -4 }, { 4, -4 }, { -4, 0 }, { 4, 0 }, { -4, 4 }, { 0, 4 },
   { 4, 4 }, { 0, 0 } }
 -- selectAllUnitsOfTypeForPlayer (double click): its "inside an engine" test, and the control
@@ -463,6 +467,9 @@ T.boardTribe = [[
   ret
 ]]
 
+-- Climbing on only takes a soldier out of the selection (what clearOrDeselectUnitFromSelection does
+-- after it has removed the unit from its troop): it stays in its troop, so the troop's stance is
+-- its stance again once the tower has docked - aggressive troops go for the enemies on the walls.
 -- PRE(unit): before a rider's own update. 1 = riding on (move it with the tower after the
 -- update), 0 = not riding (any more): on its way, put down, killed or released.
 T.pre = [[
@@ -616,12 +623,12 @@ T.pre = [[
   push edi
   mov ecx, US
   call DESELECT
-  push 0
-  push edi
+  cmp word [UNITS + 0xB2 + ebx], 0
+  je .unselected
+  mov word [UNITS + 0xB2 + ebx], 0
   movsx eax, word [UNITS + 0x96 + ebx]
-  push eax
-  mov ecx, US
-  call UNSELECT
+  dec dword [US + 0x24 + eax*4]
+.unselected:
   mov word [UNITS + 0x2A4 + ebx], 0
   push edi
   mov ecx, US
@@ -654,22 +661,6 @@ T.pin = [[
   jne .out
   movzx ebp, word [RIDE + esi + 4]
   imul ebp, ebp, 0x490
-  movzx ecx, byte [RIDE + esi + 7]
-  movsx eax, word [SLOTS + ecx*4]
-  movsx edx, word [SLOTS + ecx*4 + 2]
-  movzx ecx, word [UNITS + 0xB6 + ebp]
-  add eax, ecx
-  movzx ecx, word [UNITS + 0xB8 + ebp]
-  add edx, ecx
-  mov [RDAT + 0x30], eax
-  mov [RDAT + 0x34], edx
-  sar eax, 3
-  sar edx, 3
-  mov [RDAT + 0x38], eax
-  mov [RDAT + 0x3C], edx
-  call TILEAT
-  test eax, eax
-  jge .tile
   movzx eax, word [UNITS + 0xB6 + ebp]
   mov [RDAT + 0x30], eax
   movzx eax, word [UNITS + 0xB8 + ebp]
@@ -679,7 +670,6 @@ T.pin = [[
   movsx eax, word [UNITS + 0xC6 + ebp]
   mov [RDAT + 0x3C], eax
   mov eax, [UNITS + 0xD4 + ebp]
-.tile:
   mov [RDAT + 0x40], eax
   cmp eax, [UNITS + 0xD4 + ebx]
   je .same
@@ -704,7 +694,7 @@ T.pin = [[
   mov eax, [RDAT + 0x0C]
   neg eax
   mov [UNITS + 0x84 + ebx], ax
-  mov dword [UNITS + 0x64 + ebx], 1
+  mov dword [UNITS + 0x64 + ebx], 2
   mov word [UNITS + 0x2A4 + ebx], 0
   mov word [UNITS + 0x3FC + ebx], 0
   cmp word [UNITS + 0xFC + ebx], 0
@@ -870,6 +860,29 @@ T.update = [[
   call AIBOARD
   add esp, 4
 .tower:
+  cmp dword [RDAT + 0x60], 0
+  je .run
+  push dword [CURRENT]
+  call TAKEN
+  add esp, 4
+  xor ecx, ecx
+.bits:
+  test eax, eax
+  jz .counted
+  lea edx, [eax - 1]
+  and eax, edx
+  inc ecx
+  jmp .bits
+.counted:
+  mov edx, [SPEEDS + TOWER*4]
+  cmp ecx, HALFFULL
+  jl .speed
+  inc edx
+.speed:
+  mov eax, [CURRENT]
+  imul eax, eax, 0x490
+  mov [UNITS + 0x34C + eax], dx
+.run:
   push dword [CURRENT]
   call dword [ORIGS + TOWER*4]
   call PINALL
@@ -1067,6 +1080,16 @@ T.standing = [[
   jl .done
   cmp eax, MAXUNITS
   jge .done
+  imul ecx, eax, 0x490
+  cmp word [UNITS + 0x8E + ecx], TOWER
+  jne .unit
+  cmp word [UNITS + 0x2C0 + ecx], 9
+  je .done
+  push eax
+  call PINALL
+  add esp, 4
+  ret 4
+.unit:
   imul ecx, eax, RECORD
   cmp byte [RIDE + ecx + 6], 2
   jne .done
@@ -1163,7 +1186,10 @@ T.pinAll = [[
 ]]
 
 -- renderMap, where it reads whether to draw a unit (esi = the unit * 0x490, ebx = its vanish
--- field): a rider is drawn unless it or its tower stands in a gatehouse.
+-- field; di / cx = where it is drawn): a rider is drawn unless it or its tower stands in a
+-- gatehouse, on its place on the deck, and always after the tower: the queue of units is a ring
+-- of five map rows, +0x64 = 2 waits 5 rows, 1 waits 4. A tower is drawn at once, except on the
+-- display bit 0x10 (by buildings), where the game queues it 5 rows too: a loaded one then waits 4.
 T.drawVanish = [[
   mov ebx, [UNITS + 0x68 + esi]
   push eax
@@ -1175,12 +1201,22 @@ T.drawVanish = [[
   div ecx
   cmp eax, MAXUNITS
   jae .done
+  cmp word [UNITS + 0x8E + esi], TOWER
+  je .tower
   imul eax, eax, RECORD
   cmp byte [RIDE + eax + 6], 2
   jne .done
   mov edx, [UNITS + 0x98 + esi]
   cmp edx, [RIDE + eax]
   jne .done
+  movzx ecx, byte [RIDE + eax + 7]
+  add di, [SLOTS + ecx*4]
+  mov [UNITS + 0x14 + esi], di
+  mov cx, [SLOTS + ecx*4 + 2]
+  add [esp + 4], cx
+  mov cx, [esp + 4]
+  mov [UNITS + 0x16 + esi], cx
+  mov dword [UNITS + 0x64 + esi], 2
   xor ebx, ebx
   mov edx, [UNITS + 0xD4 + esi]
   call .gate
@@ -1193,6 +1229,19 @@ T.drawVanish = [[
   pop ecx
   pop eax
   jmp BACK
+.tower:
+  cmp dword [UNITS + 0x64 + esi], 0
+  jne .done
+  mov edx, [UNITS + 0xD4 + esi]
+  test byte [TILEBITS + edx*2], 0x10
+  jz .done
+  push eax
+  call TAKEN
+  add esp, 4
+  test eax, eax
+  jz .done
+  mov dword [UNITS + 0x64 + esi], 1
+  jmp .done
 .gate:
   cmp edx, TILES
   jae .out
@@ -1286,6 +1335,7 @@ function riders.enable(env)
   local tslot = core.allocate(G.maxUnits * 9 * 2, true)
   local rd = core.allocate(0x100, true)
   wr32(rd + 0x0C, env.lift or 0)
+  wr32(rd + 0x60, env.slow and 1 or 0)
   wr32(rd + 0x04, env.ai and 1 or 0)
   wr32(rd + 0x08, env.player and 1 or 0)
   local boardable, ranged = core.allocate(80, true), core.allocate(80, true)
@@ -1293,8 +1343,8 @@ function riders.enable(env)
   for _, kind in ipairs(AI_RANGED) do core.writeByte(ranged + kind, 1) end
   local slots = core.allocate(4 * #PLACES, true)
   for i, place in ipairs(PLACES) do
-    core.writeSmallInteger(slots + 4 * (i - 1), place[1])
-    core.writeSmallInteger(slots + 4 * (i - 1) + 2, place[2])
+    core.writeSmallInteger(slots + 4 * (i - 1), (2 * (place[1] - place[2])) & 0xFFFF)
+    core.writeSmallInteger(slots + 4 * (i - 1) + 2, (place[1] + place[2]) & 0xFFFF)
   end
   local originals = core.allocate(80 * 4, true)
   for kind = 0, 79 do wr32(originals + kind * 4, rd32(tableAt + kind * 4)) end
@@ -1302,6 +1352,8 @@ function riders.enable(env)
   local v = {
     UNITS = G.units, US = G.unitsState, TRIBES = G.tribes, TSTRIDE = G.tribeStride,
     MAXUNITS = G.maxUnits, MAXTRIBES = env.maxTribes, TICKS = G.ticks, CURRENT = current,
+    SPEEDS = rd32(scan(AOB_SPEED, "the unit speeds") + 4), HALFFULL = HALF_FULL,
+    TILEBITS = G.flags - 0x165160 + 0x301C80,
     ALT = alt, RIDE = ride, TSLOT = tslot, RDAT = rd, RECORD = RECORD, TILES = 0x13A10,
     BIDS = G.buildingIds, BTYPE = G.buildingType, GATEFIRST = GATEHOUSES[1], GATELAST = GATEHOUSES[2], TOWER = TOWER, HEIGHT = HEIGHT,
     BOARDREACH = BOARD_REACH, STOPREACH = STOP_REACH, AIREACH = AI_REACH,
