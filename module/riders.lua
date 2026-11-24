@@ -744,7 +744,8 @@ T.pin = [[
 ]]
 
 -- AIBOARD(tower): an AI tower takes on its own ranged troops standing close by (on the ground,
--- not yet riding), until its 9 places are full.
+-- not yet riding), until its 9 places are full. The targeted build uses the same
+-- seat assignment for one eligible infantry unit, without the proximity filter.
 T.aiBoard = [[
   push ebx
   push esi
@@ -762,7 +763,11 @@ T.aiBoard = [[
   call TAKEN
   add esp, 4
   mov [RDAT + 0x50], eax
+if TARGETED
+  mov ecx, [esp + 24]
+else
   mov ecx, 1
+end if
 .loop:
   cmp dword [RDAT + 0x50], 0x1FF
   je .done
@@ -781,10 +786,15 @@ T.aiBoard = [[
   movzx eax, word [UNITS + 0x8E + ebx]
   cmp eax, 80
   jae .next
+if TARGETED
+  cmp byte [BOARDABLE + eax], 0
+else
   cmp byte [AIRANGED + eax], 0
+end if
   je .next
   cmp word [UNITS + 0xBC + ebx], 0
   jne .next
+if TARGETED = 0
   movsx eax, word [UNITS + 0xC4 + ebx]
   movsx edx, word [UNITS + 0xC4 + ebp]
   sub eax, edx
@@ -797,6 +807,7 @@ T.aiBoard = [[
   add eax, AIREACH
   cmp eax, AIREACH * 2
   ja .next
+end if
   imul esi, ecx, RECORD
   cmp byte [RIDE + esi + 6], 0
   je .take
@@ -825,10 +836,20 @@ T.aiBoard = [[
   mov ecx, US
   call STOPWALK
   pop ecx
+if TARGETED
+  mov eax, 1
+  jmp .return
+.next:
+else
 .next:
   inc ecx
   jmp .loop
+end if
 .done:
+if TARGETED
+  xor eax, eax
+.return:
+end if
   pop ebp
   pop edi
   pop esi
@@ -1397,7 +1418,11 @@ function riders.enable(env)
   v.PRE = assemble(T.pre, v)
   v.PIN = assemble(T.pin, v)
   v.PINALL = assemble(T.pinAll, v)
+  v.TARGETED = 0
   v.AIBOARD = assemble(T.aiBoard, v)
+  v.TARGETED = 1
+  local boardUnit = core.exposeCode(assemble(T.aiBoard, v), 2, 0)
+  local taken = core.exposeCode(v.TAKEN, 1, 0)
   v.SELINF = assemble(T.selectedInfantry, v)
   local update = assemble(T.update, v)
   v.GOMAN, v.GOLEAVE, v.BACK = hover + HOVER_REACH[1], hover + HOVER_LEAVE[1], hover + HOVER_SIZE
@@ -1476,7 +1501,29 @@ function riders.enable(env)
     env.patch(man, env.jumpCode(man, manCode, INSTR.MAN_SIZE), INSTR.MAN_SIZE)
     env.patch(leave, env.jumpCode(leave, leaveCode, INSTR.LEAVE_SIZE), INSTR.LEAVE_SIZE)
   end
+  local function validIndex(index)
+    return math.type(index) == "integer" and index > 0 and index < G.maxUnits
+  end
+  local function validTower(tower)
+    return validIndex(tower) and core.readSmallInteger(G.units + tower * 0x490 + 0x8E) == 58
+  end
   riders.data = rd
+  riders.isClimbingReady = function()
+    return rd32(rd + 4) ~= 0 or rd32(rd + 8) ~= 0
+  end
+  riders.getFreeSeats = function(tower)
+    if not riders.isClimbingReady() or not validTower(tower) then return 0 end
+    local mask, seats = taken(tower), #PLACES
+    while mask ~= 0 do
+      mask = mask & (mask - 1)
+      seats = seats - 1
+    end
+    return seats
+  end
+  riders.boardUnit = function(tower, unit)
+    return riders.isClimbingReady() and validTower(tower) and validIndex(unit)
+      and boardUnit(tower, unit) == 1
+  end
   return true
 end
 

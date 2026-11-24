@@ -1262,7 +1262,18 @@ local function enableCommands()
     CMD_EPILOGUE_SIZE)
 end
 
+local function riderInterface(name, fallback)
+  return function(_, ...)
+    local riders = package.loaded["riders"]
+    if riders and riders[name] then return riders[name](...) end
+    return fallback
+  end
+end
+
 return {
+  isClimbingReady = riderInterface("isClimbingReady", false),
+  getFreeSeats = riderInterface("getFreeSeats", 0),
+  boardUnit = riderInterface("boardUnit", false),
 
   enable = function(self, config)
     O.catapults = setting(config, "catapults", "enabled")
@@ -1360,4 +1371,4 @@ return {
     patched = {}
   end,
 
-}
+}, { public = { "isClimbingReady", "getFreeSeats", "boardUnit" } }

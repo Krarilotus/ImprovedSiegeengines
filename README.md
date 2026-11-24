@@ -63,3 +63,5 @@ passes validation is restored in the existing save format. Invalid records are s
 * **Shields and towers**: the game's shield and tower branches in `aiCommandSiegeEngineTribes`
   are skipped; at its end the AI's shields, towers and ranged engines are collected in asm and
   lua gives the orders.
+
+Modules can call `isClimbingReady()`, `getFreeSeats(towerIndex)` and `boardUnit(towerIndex, unitIndex)` on the public interface.
