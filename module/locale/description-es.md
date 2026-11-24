@@ -1,6 +1,6 @@
 # Improved Siegeengines
 
-**Versión**: 1.0.29
+**Versión**: 1.0.31
 
 En el juego original las máquinas de asedio de la IA se desperdician solas: las catapultas avanzan hasta el muro al que podrían haber disparado desde lejos, las tiendas de asedio se alejan cada vez más en partidas largas hasta que los trabuquetes no llegan a nada, las torres de asedio esperan un muro que la IA considere válido y los escudos persiguen ciervos. Este módulo corrige cada uno de esos fallos.
 
