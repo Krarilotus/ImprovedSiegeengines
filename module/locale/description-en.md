@@ -1,6 +1,6 @@
 # Improved Siegeengines
 
-Version 1.0.21
+Version 1.0.29
 
 The AI's siege engines in the unmodified game waste themselves: catapults roll up to the wall
 they could have hit from far away, siege tents creep further out the longer a game goes until
@@ -93,7 +93,5 @@ third of their health where the oil reaches them; walls, towers, gatehouses and 
 
 ## Good to know
 
-* Smarter Walls used to do the diagonal docking. Use Smarter Walls 1.0.16 or newer with this
-  module - older versions change the same piece of the game and the two get in each other's way.
 * Everyone in a multiplayer game needs this module with the same settings.
 * Nothing is stored in save games.

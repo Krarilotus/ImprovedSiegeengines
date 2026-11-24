@@ -1,0 +1,65 @@
+ai: IA
+balance_changes: Cambios de equilibrio
+bugfixes: Correcciones
+catapults_drop_destroyed: Dejar de disparar a edificios destruidos
+catapults_drop_destroyed_details: Una máquina de asedio que apuntaba a un edificio (una balista de fuego a algo inflamable o una catapulta ordenada contra un edificio) seguía disparando al solar vacío tras destruirlo sin cambiar nunca de objetivo, porque el juego solo comprobaba el número del edificio, que permanece hasta que otro edificio lo ocupa. Ahora se descarta el objetivo destruido y la máquina busca otro nuevo. Funciona para todas las máquinas de asedio, incluidas las balistas de fuego.
+catapults_enabled: Las catapultas y trabuquetes eligen sus propios objetivos
+catapults_enabled_details: 'Desactivado: las catapultas y trabuquetes de la IA eligen sus objetivos exactamente igual que en el juego original.'
+catapults_group: Catapultas y trabuquetes
+catapults_group_details: |-
+  En el juego original, una catapulta de la IA solo busca objetivos en una dirección cada vez y únicamente muros que aún siguen altos. Cuando no encuentra nada avanza hacia el castillo y, si nadie la destruye por el camino, acaba pegada al muro.
+
+  Con esta opción, una catapulta o un trabuquete de la IA mira primero alrededor en todo su alcance buscando el muro, torre o puerta enemigos más cercanos y dispara desde donde está. Las granjas, talleres, chozas y demás edificios civiles solo se atacan cuando no queda ninguna fortificación al alcance. Solo se acerca si realmente no hay nada al alcance. Una vez derrotado el jugador contra el que fue enviado (su señor ha muerto), dispara contra cualquier otro enemigo. Las balistas de fuego ya hacen esto en el juego original y no se modifican.
+catapults_on_the_way: Las catapultas y trabuquetes se detienen en camino para disparar
+catapults_on_the_way_details: En el juego original una máquina de asedio solo busca objetivos cuando está quieta, así que una catapulta de la IA en movimiento —en una incursión, marchando con el ejército o avanzando hacia los muros— pasa de largo ante todo lo que está a su alcance. Con esto, una catapulta o un trabuquete de la IA en marcha mira alrededor cada pocos instantes y, en cuanto un muro, torre, puerta o edificio enemigo entra en su alcance, se detiene y dispara eligiendo objetivo como arriba. Requiere la opción anterior.
+catapults_other_enemies: Disparar también a otros enemigos al alcance
+catapults_other_enemies_details: Una catapulta o un trabuquete de la IA solo dispara al jugador al que está asediando. Cuando nada de ese jugador está al alcance avanza hacia su castillo pasando de largo ante muros y edificios de otros enemigos. Con esta opción dispara contra ellos; los muros y edificios del jugador asediado siguen teniendo prioridad en cuanto haya uno al alcance.
+catapults_scatter: Dispersión de catapultas y trabuquetes de la IA (%)
+catapults_scatter_tooltip: Cuánto se desvían los disparos de catapultas y trabuquetes de la IA respecto al juego original. Por debajo de 100 el desvío se reduce y el de la catapulta se centra en el objetivo. 100 mantiene la puntería original. Tus propias máquinas no cambian.
+diagnostics_group: Diagnóstico
+diagnostics_group_descr: Para pruebas. Escribe una línea en ucp3.log cuando un escudo móvil, una torre de asedio o un ingeniero de la IA recibe un nuevo destino, y un resumen de cada ronda de asedio de la IA (qué encontró y qué descartó) cada vez que cambia.
+diagnostics_log: Registrar decisiones de la IA en el log
+diagnostics_log_details: Desactivado para partidas normales. Registra en ucp3.log las rondas de asedio de la IA y cada objetivo que elige una catapulta o trabuquete (su posición, la casilla objetivo y lo que hay en ella).
+fixes: Correcciones
+improvements: Mejoras
+misc: Varios
+oil_aim: Verter aceite solo sobre el suelo
+oil_aim_details: 'Un ingeniero solo vierte aceite donde el fuego puede arder: suelo despejado, nunca un muro, escalera, torre u otro edificio. Por su cuenta, los ingenieros solo vierten sobre enemigos situados en ese tipo de suelo. Si lo envías a un lugar inadecuado, el ingeniero vierte en el suelo válido más cercano hasta a 4 casillas, a no más de 45 grados de la línea hacia tu punto. Si no hay ninguno, conserva el aceite y dice «ubicación imposible», igual que cuando una unidad no puede ir a un sitio. Además, el caldero ya no se desvía del punto donde se vertió.'
+oil_amount: Casillas que cubre un caldero
+oil_amount_tooltip: Cuántas casillas cubre el aceite de un caldero. 41 es lo que cubre el fuego original en campo abierto.
+oil_damage: El aceite ardiendo daña los edificios que toca
+oil_damage_details: 'La contrapartida: los edificios a los que llega el aceite reciben daño una vez al alcanzarlos —un tercio de su salud justo donde cayó el caldero, y menos cuanto más lejos lleguen por el charco. También los tuyos. Esto incluye cualquier edificio inflamable del juego: chozas, talleres, granjas, molinos, granero, arsenal, cuartel, mercado, establos, gremios, capilla, iglesia, catedral, posada, panadería, herrería, caldero de aceite, etc. Los muros, torres, puertas, fortalezas, almacenes, pozos y tiendas de asedio no sufren daño. El fuego se propaga igual que en el juego original (tu propio fuego nunca incendia tus edificios).'
+oil_group: Ingenieros con aceite
+oil_group_details: Afecta a los ingenieros con aceite de todos los jugadores, incluidos los tuyos. En el juego original el aceite se lanza con una ligera desviación aleatoria; si cae sobre un muro, escalera, torre u otro obstáculo no hace nada y el ingeniero vuelve a rellenar en vano. Además el fuego tiene siempre la misma forma de rombo sea cual sea el terreno.
+oil_spread: El aceite se extiende según su cantidad
+oil_spread_details: 'El aceite de un caldero fluye por el terreno donde cae: la misma cantidad cubre siempre el mismo número de casillas y solo corre entre casillas de altura similar, nunca subiendo ni bajando un muro o un escalón pronunciado. Empieza donde apuntó el ingeniero, incluso si el caldero cae sobre el muro en el que está. En terreno abierto es exactamente igual que el juego original (mismo fuego, llamarada y propagación). Por un pasillo estrecho donde llega más lejos parece varios calderos vertidos en cadena: cada 5 casillas se enciende otro foco con su llamarada y el sonido del impacto.'
+shields_enabled: Los escudos caminan con sus propias tropas
+shields_enabled_details: Los escudos portátiles de la IA acompañan a las tropas que rellenan el foso, a las máquinas de asedio a distancia del ejército atacante (no a las que la IA deja en casa) y a sus tropas a distancia (arqueros, ballesteros, honderos, arqueros a caballo, lanzafuegos), solo de su propio jugador o de un aliado y nunca a la infantería cuerpo a cuerpo principal. Las tropas de reserva solo reciben escudos cuando ya no queda ninguno de esos grupos. Los escudos se reparten de forma uniforme (cada nuevo escudo va donde hay menos y se queda mientras ese lugar no exceda su parte). Si no queda nadie, el escudo se detiene y espera.
+shields_group: Escudos portátiles
+shields_group_descr: En el juego original los escudos portátiles de la IA solo siguen a las tropas de reserva (como máximo tres), y un escudo cuya tropa ha desaparecido puede acabar persiguiendo a cualquier unidad que ocupe el lugar del líder —incluso a un ciervo.
+tags.behavior: Comportamiento
+tents_engineers: Los ingenieros siempre entran en su tienda
+tents_engineers_details: 'En el juego original un ingeniero cuyo camino a la entrada de una tienda de asedio está bloqueado se rinde y se queda quieto, y la tienda nunca construye su máquina. Ahora, en cada ronda de la IA, toda tienda a la que aún le falten ingenieros revisa su entrada al modo del juego —una entrada bloqueada se mueve a un lado libre— y vuelve a recibir ingenieros: primero quienes desistieron o se atascaron en camino, luego ingenieros inactivos cercanos (a 60 casillas). Una tienda rodeada de muros espera a que se abra paso y entonces recibe sus ingenieros.'
+tents_free: Reutilizar emplazamientos seguros de tiendas
+tents_free_details: 'Un emplazamiento de tienda puede volver a usarse en cuanto la tropa que construyó allí se ha marchado, no queda nada encima y ningún soldado enemigo está lo bastante cerca para atacar una máquina ahí (arqueros, ballesteros, honderos, arqueros a caballo y lanzafuegos según su alcance —incluso sobre torres— y cualquier soldado con espada o lanza en 10 casillas). Las balistas no cuentan: su enorme alcance descartaría casi cualquier sitio.'
+tents_group: Tiendas de asedio
+tents_group_details: |-
+  La IA elige dónde poner sus tiendas de asedio de una lista que calcula para cada castillo. En el juego original, un sitio usado una vez queda marcado como ocupado para toda la partida, de modo que en partidas largas todos los buenos sitios se agotan y las tiendas acaban cada vez más lejos, hasta que los trabuquetes ya no alcanzan el castillo y se quedan quietos.
+
+  Los dos interruptores de abajo corrigen esto por separado. Solo afecta a jugadores de la IA.
+tents_range: Colocar tiendas de máquinas a distancia según su alcance
+tents_range_details: 'Las tiendas de catapultas, trabuquetes y balistas de fuego se colocan donde la máquina alcance el castillo: medido desde muros, torres y puertas enemigos, algo por debajo de su alcance para golpear también objetivos interiores. Las tiendas de torres de asedio, arietes y escudos se colocan como antes. Si no hay un sitio así, la IA usa su método habitual.'
+tents_variation: Cuánto más cerca (casillas)
+tents_variation_tooltip: Cada tienda de máquina a distancia se coloca entre 0 y estas casillas por debajo del alcance máximo (siempre al menos 6 casillas dentro del alcance por la tienda y la salida de la máquina, para que incluso la más lejana llegue), variando un poco para cada tienda. 0 coloca todas al borde del alcance.
+towers_ai_passengers: Las torres de asedio de la IA embarcan tiradores
+towers_ai_passengers_details: Una torre de asedio de la IA embarca a sus propios arqueros, ballesteros, honderos y lanzafuegos que estén a 3 casillas o menos (hasta 9) y los lleva hasta el muro.
+towers_dock: Las torres de asedio acoplan en más muros
+towers_dock_details: Si el juego no encuentra sitio, la torre de asedio intenta acoplarse a un muro diagonal con una esquina de su base de 3 × 3 casillas. Si tampoco puede, lo intenta hasta tres casillas más allá en el mismo muro. Sirve para todas las torres de asedio, incluidas las tuyas.
+towers_group: Torres de asedio
+towers_group_details: En el juego original una torre de asedio solo puede acoplarse a un tramo recto de muro de al menos tres casillas con un cuadrado 3x3 libre delante, y la IA solo envía torres a muros de su propia lista de esos lugares —a menudo tarde, y nunca a castillos sin ellos.
+towers_orders: Las torres de asedio de la IA buscan su propio muro
+towers_orders_details: 'Una torre de asedio de la IA inactiva busca el muro enemigo más cercano al que pueda acoplarse (en 100 casillas) y va hacia allí; si no hay ninguno, prueba con un muro de la lista de la IA. Si eso tampoco funciona —no recibe orden, se detiene en camino o el castillo no admite acople en ningún punto— acompaña al ejército como un gran escudo hasta que haya un muro al alcance: primero con las patrullas, luego con la escolta de asedio, el ejército principal, una tropa a distancia elegida al azar y por último con las tropas de reserva.'
+towers_passenger_lift: Elevar dibujo de pasajeros (píxeles)
+towers_passenger_lift_tooltip: 'Solo afecta a dónde se dibujan los pasajeros: súbelo si parecen hundidos bajo la plataforma superior de una torre en movimiento, bájalo si flotan por encima. Su altura real —y el alcance de flechas desde abajo y espadas— es en cualquier caso la de una torre acoplada.'
+towers_passengers: Los soldados a pie viajan en torres de asedio
+towers_passengers_details: 'Selecciona soldados a pie y apunta a una de tus torres de asedio: aparecerán las flechas de embarque y un clic los enviará hacia ella. Hasta 9 suben arriba al llegar y viajan en la torre —arqueros y ballesteros disparan incluso mientras rueda. Arriba están tan protegidos como en una torre acoplada: las flechas desde abajo hacen un tercio de daño y las espadas no llegan. No se pueden seleccionar mientras viajan. Al acoplar en un muro quedan sobre la torre y siguen desde allí; si la torre es destruida mueren con ella. Selecciona la torre y apunta sobre ella para desembarcar: el primer clic baja a los pasajeros alrededor y el segundo a los ingenieros, como antes.'
