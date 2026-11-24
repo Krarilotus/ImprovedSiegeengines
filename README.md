@@ -65,3 +65,4 @@ passes validation is restored in the existing save format. Invalid records are s
   lua gives the orders.
 
 Modules can call `isClimbingReady()`, `getFreeSeats(towerIndex)` and `boardUnit(towerIndex, unitIndex)` on the public interface.
+`registerTowerCrewPolicy(callback)` lets one module choose the crew before the AI tower update tries proximity boarding. The callback receives the tower index and returns true to skip proximity boarding for that update. It can register before or after passenger support initializes.

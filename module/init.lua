@@ -1262,6 +1262,8 @@ local function enableCommands()
     CMD_EPILOGUE_SIZE)
 end
 
+local crewPolicy
+
 local function riderInterface(name, fallback)
   return function(_, ...)
     local riders = package.loaded["riders"]
@@ -1271,6 +1273,12 @@ local function riderInterface(name, fallback)
 end
 
 return {
+  registerTowerCrewPolicy = function(_, policy)
+    assert(type(policy) == "function" and crewPolicy == nil, "Expected one tower crew policy")
+    crewPolicy = policy
+    local riders = package.loaded["riders"]
+    if riders and riders.enableCrewPolicy then riders.enableCrewPolicy() end
+  end,
   isClimbingReady = riderInterface("isClimbingReady", false),
   getFreeSeats = riderInterface("getFreeSeats", 0),
   boardUnit = riderInterface("boardUnit", false),
@@ -1316,7 +1324,11 @@ return {
     state.riders = (O.passengers or O.aiPassengers) and try("siege tower passengers", function()
       require("riders").enable({ G = G, rd32 = rd32, wr32 = wr32, scan = scan, expectBytes = expectBytes,
         operand = operand, callTarget = callTarget, assemble = assemble, patch = patch,
-        jumpCode = jumpCode, player = O.passengers, ai = O.aiPassengers, maxTribes = MAX_TRIBES,
+        jumpCode = jumpCode, luaFunction = luaFunction,
+        crewPolicy = function(tower)
+          return crewPolicy and crewPolicy(tower)
+        end, hasCrewPolicy = crewPolicy ~= nil,
+        player = O.passengers, ai = O.aiPassengers, maxTribes = MAX_TRIBES,
         lift = number(config, "towers", "passenger_lift", -40, 80),
         slow = setting(config, "towers", "passenger_slow"),
         playerStride = P.STRIDE, aiType = G.players + P.AI_TYPE,
@@ -1371,4 +1383,4 @@ return {
     patched = {}
   end,
 
-}, { public = { "isClimbingReady", "getFreeSeats", "boardUnit" } }
+}, { public = { "isClimbingReady", "getFreeSeats", "boardUnit", "registerTowerCrewPolicy" } }

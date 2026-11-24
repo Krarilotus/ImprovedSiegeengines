@@ -867,12 +867,6 @@ T.update = [[
   imul ecx, eax, 0x490
   cmp word [UNITS + 0x8E + ecx], TOWER
   jne .orig
-  cmp dword [RDAT + 4], 0
-  je .tower
-  mov edx, [TICKS]
-  add edx, eax
-  test edx, 31
-  jnz .tower
   movsx edx, word [UNITS + 0x96 + ecx]
   cmp edx, 1
   jl .tower
@@ -881,6 +875,19 @@ T.update = [[
   imul edx, edx, PSTRIDE
   cmp dword [AITYPE + edx], 0
   je .tower
+  cmp dword [RDAT + 0x64], 0
+  je .auto
+  call CREWPOLICY
+  cmp dword [RDAT + 0x68], 0
+  jne .tower
+.auto:
+  cmp dword [RDAT + 4], 0
+  je .tower
+  mov eax, [CURRENT]
+  mov edx, [TICKS]
+  add edx, eax
+  test edx, 31
+  jnz .tower
   push eax
   call AIBOARD
   add esp, 4
@@ -1424,6 +1431,10 @@ function riders.enable(env)
   local boardUnit = core.exposeCode(assemble(T.aiBoard, v), 2, 0)
   local taken = core.exposeCode(v.TAKEN, 1, 0)
   v.SELINF = assemble(T.selectedInfantry, v)
+  v.CREWPOLICY = env.luaFunction("the AI tower crew policy", function()
+    wr32(rd + 0x68, 0)
+    if env.crewPolicy(rd32(current)) then wr32(rd + 0x68, 1) end
+  end)
   local update = assemble(T.update, v)
   v.GOMAN, v.GOLEAVE, v.BACK = hover + HOVER_REACH[1], hover + HOVER_LEAVE[1], hover + HOVER_SIZE
   local hoverCode = assemble(T.hover, v)
@@ -1508,6 +1519,8 @@ function riders.enable(env)
     return validIndex(tower) and core.readSmallInteger(G.units + tower * 0x490 + 0x8E) == 58
   end
   riders.data = rd
+  riders.enableCrewPolicy = function() wr32(rd + 0x64, 1) end
+  if env.hasCrewPolicy then riders.enableCrewPolicy() end
   riders.isClimbingReady = function()
     return rd32(rd + 4) ~= 0 or rd32(rd + 8) ~= 0
   end
