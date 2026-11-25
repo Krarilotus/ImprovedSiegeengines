@@ -94,7 +94,7 @@ local TENTS_SUIT_CALL = 0x2FA               -- call placeSiegeTentOrTunnelAtSuit
 local TENT_PROLOGUE = { 0x53, 0x8B, 0x5C, 0x24, 0x08 }   -- push ebx; mov ebx, [esp+8]
 local ANGLE_FIND_CALL = 0x37                -- call algFindAttackAngle
 local SPOT_HOOK = { 0x1A1, { 0x8B, 0xC8, 0xC1, 0xE1, 0x05, 0x83, 0xB9 } }
-local SPOT_HOOK_SIZE = 0x1B
+local SPOT_HOOK_SIZE = 0x15                 -- up to the je, which stays the game's
 local SPOT_THREE = 0x1A8                    -- cmp [ecx + spots.three], 0
 local SPOT_TRIBE = { 0x1AF, { 0x83, 0xB9 } } -- cmp [ecx + spots.tribeID], 0
 local SPOT_FOUND = { 0x1B6, { 0x0F, 0x84 } } -- je <return the spot>
@@ -1041,7 +1041,6 @@ local function enableTents()
   local tribeId = operand(find, SPOT_TRIBE, "the tent spots")
   if three - tribeId ~= 8 then error("the tent spots are not laid out as this module knows", 0) end
   expectBytes(find + SPOT_FOUND[1], SPOT_FOUND[2], "the tent spot search")
-  local found = (find + SPOT_FOUND[1] + 6 + rd32(find + SPOT_FOUND[1] + 2)) & 0xFFFFFFFF
   local location = scan(AOB_LOCATION, "the siege tent location search")
   expectBytes(location + LOCATION_HOOK[1], LOCATION_HOOK[2], "the siege tent location search")
   local engineers = scan(AOB_ENGINEERS, "the siege engine types")
@@ -1056,7 +1055,7 @@ local function enableTents()
     MELEE = MELEE_REACH, MAXTHREATS = MAX_THREATS, MARGIN = TENT_MARGIN,
     ENG_UT = operand(engineers, ENGINEERS_UNIT_TYPES, "the siege engine types"),
     ENG_BT = operand(engineers, ENGINEERS_TENT_TYPES, "the siege tent types"),
-    THREE = three, TID = tribeId, FOUND = found, CONTINUE = find + SPOT_HOOK[1] + SPOT_HOOK_SIZE,
+    THREE = three, TID = tribeId, FOUND = find + SPOT_FOUND[1], CONTINUE = find + SPOT_FOUND[1] + 6,
     ATTACKED_PID = operand(location, LOCATION_ATTACKED, "the AI's distance layer"),
     LAYER = operand(location, LOCATION_LAYER, "the AI's distance layer"),
     RESUME = location + LOCATION_HOOK[1] + LOCATION_HOOK_SIZE })

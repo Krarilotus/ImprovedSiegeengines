@@ -880,7 +880,8 @@ templates.tentOrig = [[
 ]]
 
 -- algFindAttackAngle, a tent spot the search reached: eax = its index. Takes the place of the
--- game's "never used" test (three == 0 and tribeID == 0).
+-- game's "never used" test (three == 0 and tribeID == 0). FOUND is the game's je after it:
+-- ZF set takes the spot through that branch, wherever another module points it.
 templates.tentSpot = [[
   cmp dword [D + 0x04], 0
   jne .mine
@@ -891,8 +892,7 @@ templates.tentSpot = [[
   cmp dword [ecx + THREE], 0
   jne CONTINUE
   cmp dword [ecx + TID], 0
-  je FOUND
-  jmp CONTINUE
+  jmp FOUND
 .mine:
   push eax
   push ebx
@@ -950,6 +950,9 @@ templates.tentSpot = [[
   pop edx
   pop ebx
   pop eax
+  mov ecx, eax
+  shl ecx, 5
+  cmp ecx, ecx
   jmp FOUND
 .reject:
   pop esi
