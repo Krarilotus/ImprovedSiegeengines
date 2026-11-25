@@ -1,6 +1,6 @@
 # Improved Siegeengines
 
-**Verzió**: 1.0.31
+**Verzió**: 1.0.32
 
 Az alapjátékban az MI ostromgépei elpazarolják magukat: a katapultok egészen a falig gurulnak ahelyett, hogy távolról lőnék, hosszú játékokban az ostromsátrak egyre messzebb kerülnek, míg a hajítógépek már semmit nem érnek el, az ostromtornyok megfelelő falra várva ácsorognak, a pajzsok pedig szarvasokat kergetnek. Ez a modul mindegyiket kijavítja.
 
