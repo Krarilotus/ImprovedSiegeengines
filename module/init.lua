@@ -173,8 +173,9 @@ local OILAT = {
   OIL_POT_FIRE = 0xFC,
   FIRE_AT = { 0x4B, { 0x81, 0xF9, 0x8F, 0x01, 0x00, 0x00 } },   -- past the random nudge
   FIRE_STRENGTH = { 0x1A0, { 0x66, 0x89, 0x91 } },   -- mov [ecx + fire.strength], dx
-  -- updateEntities, once a tick: the oil flows on from here
-  AOB_ENTITIES = "51 53 55 56 8B F1 8B 0D",
+  -- updateEntities, once a tick: the oil flows on from here. The pattern starts after the
+  -- prologue, so it also matches when another module has hooked the prologue.
+  AOB_ENTITIES = "8B 0D ? ? ? ? B8 67 66 66 66 F7 E9 C1 FA 02 8B C2 C1 E8 1F 03 C2 8D 04 80 03 C0 2B C8 75 07 C7 46 08 19 00 00 00",
   ENTITIES_PROLOGUE = { 0x00, { 0x51, 0x53, 0x55, 0x56, 0x8B, 0xF1 } },
   ENTITIES_PROLOGUE_SIZE = 6,
   OIL_STEP = 3,            -- ticks the oil takes from one tile to the next
@@ -1149,8 +1150,15 @@ local function enableOil()
     "the flammability test")
   local damage = scan(OILAT.AOB_BUILDING_DAMAGE, "the building damage")
 
-  local entities = scan(OILAT.AOB_ENTITIES, "the entity update")
-  expectBytes(entities, OILAT.ENTITIES_PROLOGUE[2], "the entity update")
+  local entities = scan(OILAT.AOB_ENTITIES, "the entity update") - OILAT.ENTITIES_PROLOGUE_SIZE
+  local game
+  if pcall(expectBytes, entities, OILAT.ENTITIES_PROLOGUE[2], "the entity update") then
+    game = assemble(templates.oilGame, { RESUME = entities + OILAT.ENTITIES_PROLOGUE_SIZE })
+  elseif byte(entities) == 0xE9 and byte(entities + 5) == 0x90 then
+    game = relative(entities)   -- another module's hook, which runs the prologue
+  else
+    error("another module changed the start of the entity update", 0)
+  end
   G.oil = core.allocate(0x100, true)
   wr32(G.oil + 0x00, O.oilAim and 1 or 0)
   wr32(G.oil + 0x04, O.oilSpread and 1 or 0)
@@ -1192,7 +1200,7 @@ local function enableOil()
   v.RESUME = auto + OILAT.AUTO_OIL_TAKE[1] + OILAT.AUTO_OIL_TAKE_SIZE
   local take = assemble(templates.oilAuto, v)
 
-  v.RESUME = entities + OILAT.ENTITIES_PROLOGUE_SIZE
+  v.GAME = game
   local tick = assemble(templates.oilTick, v)
 
   patch(entities, jumpCode(entities, tick, OILAT.ENTITIES_PROLOGUE_SIZE), OILAT.ENTITIES_PROLOGUE_SIZE)

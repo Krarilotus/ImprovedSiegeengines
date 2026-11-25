@@ -150,7 +150,7 @@ def check(name, e):
     expect(fire + SITE['FIRE_AT'][0], SITE['FIRE_AT'][1], 'FIRE_AT')
     expect(fire + SITE['FIRE_STRENGTH'][0], SITE['FIRE_STRENGTH'][1], 'FIRE_STRENGTH')
     fl = call(scan('AOB_CONE') + NUM['CONE_FLAMMABLE'], 'flammability')
-    expect(scan('AOB_ENTITIES'), SITE['ENTITIES_PROLOGUE'][1], 'ENTITIES_PROLOGUE')
+    expect(scan('AOB_ENTITIES') - len(SITE['ENTITIES_PROLOGUE'][1]), SITE['ENTITIES_PROLOGUE'][1], 'ENTITIES_PROLOGUE')
     print('         flammability %X fire strength at %X' % (fl, e.u32(fire + SITE['FIRE_STRENGTH'][0] + 3)))
     mv = scan('AOB_MOVE_COMMAND')
     for k in ('MOVE_LOCAL_PLAYER', 'MOVE_SFX'):

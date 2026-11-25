@@ -2252,7 +2252,7 @@ templates.oilEnqueue = [[
 
 -- updateEntities, once a tick, before the game's own: the queued oil fire and building damage
 -- that is due, so the oil runs outwards tile by tile (all dropped when the tick counter jumps - a
--- loaded game). Then the game's first six bytes.
+-- loaded game). Then GAME: the game's first six bytes, or the hook another module put there.
 templates.oilTick = [[
   push eax
   push edx
@@ -2319,6 +2319,11 @@ templates.oilTick = [[
 .done:
   popad
 .game:
+  jmp GAME
+]]
+
+-- updateEntities' first six bytes, then the rest of it.
+templates.oilGame = [[
   push ecx
   push ebx
   push ebp
