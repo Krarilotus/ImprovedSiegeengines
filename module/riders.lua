@@ -44,6 +44,7 @@ local AI_RANGED = { 22, 23, 70, 72, 76 }
 local HALF_FULL = 5          -- passengers (of 9) from which a tower is one speed step slower
 -- setUnitValues: a unit's speed from the table by unit type (read live, so balance changes count).
 local AOB_SPEED = "0F B7 04 BD ? ? ? ? 33 D2 66 89 86 60 09 00 00"
+local AOB_TILE_BITS = "F6 04 5D ? ? ? ? 10 74 0D 83 BE"
 -- All riders stand on the tower's own tile and point; the places are only where they are drawn.
 local PLACES = { { -4, -4 }, { 0, -4 }, { 4, -4 }, { -4, 0 }, { 4, 0 }, { -4, 4 }, { 0, 4 },
   { 4, 4 }, { 0, 0 } }
@@ -892,8 +893,7 @@ T.update = [[
   call AIBOARD
   add esp, 4
 .tower:
-  cmp dword [RDAT + 0x60], 0
-  je .run
+  if SPEEDS <> 0
   push dword [CURRENT]
   call TAKEN
   add esp, 4
@@ -914,6 +914,7 @@ T.update = [[
   mov eax, [CURRENT]
   imul eax, eax, 0x490
   mov [UNITS + 0x34C + eax], dx
+  end if
 .run:
   push dword [CURRENT]
   call dword [ORIGS + TOWER*4]
@@ -1270,6 +1271,7 @@ T.drawVanish = [[
   pop eax
   jmp BACK
 .tower:
+  if TILEBITS <> 0
   cmp dword [UNITS + 0x64 + esi], 0
   jne .done
   mov edx, [UNITS + 0xD4 + esi]
@@ -1281,6 +1283,7 @@ T.drawVanish = [[
   test eax, eax
   jz .done
   mov dword [UNITS + 0x64 + esi], 1
+  end if
   jmp .done
 .gate:
   cmp edx, TILES
@@ -1371,11 +1374,25 @@ function riders.enable(env)
   local groupSelect = scan(AOB_GROUP_SELECT, "selecting a control group")
   expectBytes(groupSelect + GROUP_NEXT[1], GROUP_NEXT[2], "selecting a control group")
 
+  local function optionalOperand(pattern, description, offset)
+    local address, reason
+    if core.AOBScanUnique then
+      address, reason = core.AOBScanUnique(pattern)
+    else
+      address = core.scanForAOB(pattern)
+      if not address then reason = "not found"
+      elseif core.scanForAOB(pattern, address + 1) then reason = "found more than once" end
+    end
+    if not reason and address then return rd32(address + offset) end
+    log(WARNING, description .. " unavailable: " .. tostring(reason))
+    return 0
+  end
+  local tileBits = optionalOperand(AOB_TILE_BITS, "siege tower draw ordering", 3)
+  local speeds = env.slow and optionalOperand(AOB_SPEED, "loaded siege tower slowdown", 4) or 0
   local ride = core.allocate(G.maxUnits * RECORD, true)
   local tslot = core.allocate(G.maxUnits * 9 * 2, true)
   local rd = core.allocate(0x100, true)
   wr32(rd + 0x0C, env.lift or 0)
-  wr32(rd + 0x60, env.slow and 1 or 0)
   wr32(rd + 0x04, env.ai and 1 or 0)
   wr32(rd + 0x08, env.player and 1 or 0)
   local boardable, ranged = core.allocate(80, true), core.allocate(80, true)
@@ -1392,8 +1409,7 @@ function riders.enable(env)
   local v = {
     UNITS = G.units, US = G.unitsState, TRIBES = G.tribes, TSTRIDE = G.tribeStride,
     MAXUNITS = G.maxUnits, MAXTRIBES = env.maxTribes, TICKS = G.ticks, CURRENT = current,
-    SPEEDS = rd32(scan(AOB_SPEED, "the unit speeds") + 4), HALFFULL = HALF_FULL,
-    TILEBITS = G.flags - 0x165160 + 0x301C80,
+    SPEEDS = speeds, HALFFULL = HALF_FULL, TILEBITS = tileBits,
     ALT = alt, RIDE = ride, TSLOT = tslot, RDAT = rd, RECORD = RECORD, TILES = 0x13A10,
     BIDS = G.buildingIds, BTYPE = G.buildingType, GATEFIRST = GATEHOUSES[1], GATELAST = GATEHOUSES[2], TOWER = TOWER, HEIGHT = HEIGHT,
     BOARDREACH = BOARD_REACH, STOPREACH = STOP_REACH, AIREACH = AI_REACH,
