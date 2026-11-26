@@ -110,6 +110,10 @@ towers_passengers_tooltip: |
   docked tower and go on from there; when it is destroyed they die with it. Select the tower and
   point at it for the arrows to leave an engine: the first click puts the passengers down around
   it, the next one the engineers, as before.
+towers_passenger_slow: Loaded siege towers are slower
+towers_passenger_slow_tooltip: |
+  A siege tower with 5 or more passengers (half of its 9 places) moves one speed step slower
+  than it normally would.
 towers_passenger_lift: Passengers drawn higher by (pixels)
 towers_passenger_lift_tooltip: |
   Only where the passengers are drawn: raise this if they look like they stand below the top
