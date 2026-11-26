@@ -15,7 +15,7 @@ options:
     display: UCP2Switch
     contents:
       type: boolean
-      value: true
+      value: false
     header: '{{catapults_enabled}}'
   - url: improved-siegeengines.catapults.on_the_way
     name: improved-siegeengines-catapults-on-the-way
@@ -23,7 +23,7 @@ options:
     display: UCP2Switch
     contents:
       type: boolean
-      value: true
+      value: false
     header: '{{catapults_on_the_way}}'
   - url: improved-siegeengines.catapults.other_enemies
     name: improved-siegeengines-catapults-other-enemies
@@ -31,7 +31,7 @@ options:
     display: UCP2Switch
     contents:
       type: boolean
-      value: true
+      value: false
     header: '{{catapults_other_enemies}}'
   - url: improved-siegeengines.catapults.scatter
     name: improved-siegeengines-catapults-scatter
@@ -40,7 +40,7 @@ options:
     display: Number
     contents:
       type: integer
-      value: 50
+      value: 100
       min: 0
       max: 100
       step: 10
@@ -58,7 +58,7 @@ options:
     display: UCP2Switch
     contents:
       type: boolean
-      value: true
+      value: false
     header: '{{tents_range}}'
   - url: improved-siegeengines.tents.variation
     name: improved-siegeengines-tents-variation
@@ -85,7 +85,7 @@ options:
     display: UCP2Switch
     contents:
       type: boolean
-      value: true
+      value: false
     header: '{{towers_orders}}'
   - url: improved-siegeengines.towers.passenger_slow
     name: improved-siegeengines-towers-passenger-slow
@@ -94,7 +94,7 @@ options:
     display: Switch
     contents:
       type: boolean
-      value: true
+      value: false
   - url: improved-siegeengines.towers.passenger_lift
     name: improved-siegeengines-towers-passenger-lift
     text: '{{towers_passenger_lift}}'
@@ -120,7 +120,7 @@ options:
     display: UCP2Switch
     contents:
       type: boolean
-      value: true
+      value: false
     header: '{{shields_enabled}}'
 - display: GroupBox
   category:
@@ -135,7 +135,7 @@ options:
     display: UCP2Switch
     contents:
       type: boolean
-      value: true
+      value: false
     header: '{{oil_aim}}'
   - url: improved-siegeengines.oil.spread
     name: improved-siegeengines-oil-spread
@@ -143,7 +143,7 @@ options:
     display: UCP2Switch
     contents:
       type: boolean
-      value: true
+      value: false
     header: '{{oil_spread}}'
   - url: improved-siegeengines.oil.amount
     name: improved-siegeengines-oil-amount
@@ -162,7 +162,7 @@ options:
     display: UCP2Switch
     contents:
       type: boolean
-      value: true
+      value: false
     header: '{{oil_damage}}'
 - display: GroupBox
   category:
@@ -185,7 +185,7 @@ options:
   display: UCP2Switch
   contents:
     type: boolean
-    value: true
+    value: false
   header: '{{catapults_drop_destroyed}}'
   category:
   - '{{ai}}'
@@ -196,7 +196,7 @@ options:
   display: UCP2Switch
   contents:
     type: boolean
-    value: true
+    value: false
   header: '{{tents_free}}'
   category:
   - '{{ai}}'
@@ -207,7 +207,7 @@ options:
   display: UCP2Switch
   contents:
     type: boolean
-    value: true
+    value: false
   header: '{{tents_engineers}}'
   category:
   - '{{ai}}'
@@ -218,7 +218,7 @@ options:
   display: UCP2Switch
   contents:
     type: boolean
-    value: true
+    value: false
   header: '{{towers_dock}}'
   category:
   - '{{bugfixes}}'
@@ -228,7 +228,7 @@ options:
   display: UCP2Switch
   contents:
     type: boolean
-    value: true
+    value: false
   header: '{{towers_passengers}}'
   category:
   - '{{balance_changes}}'
@@ -238,7 +238,7 @@ options:
   display: UCP2Switch
   contents:
     type: boolean
-    value: true
+    value: false
   header: '{{towers_ai_passengers}}'
   category:
   - '{{balance_changes}}'

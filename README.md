@@ -13,12 +13,11 @@ with their own troops. The player-facing description is in
    **Customizations** and find its options under **AI**, **Bugfixes**, **Balance Changes**
    and **Miscellaneous**.
 2. Choose the individual features, apply the configuration and restart the game. Click a
-   setting title for details. The module supplies its defaults, so you can start without
-   a separate configuration file.
+   setting title for details. Every option is off by default.
 3. For ranged AI engines, **Improved target search** enables the base targeting behaviour
    used by **Stop and shoot on the way** and **Shoot at other enemies**. Dropping destroyed
    targets and reducing scatter have independent settings. Set scatter to 100% to use the
-   original aim. The default is 50%. For comparison: the game lets a catapult rock land up
+   original aim. The recommended setting is 50%. For comparison: the game lets a catapult rock land up
    to 12 tiles short (4 long) and 6 to the side, and a trebuchet up to 6 to the side, so at
    long range most shots hit open ground in front of the wall.
 4. To carry foot soldiers, enable **Foot soldiers ride on siege towers**, select soldiers
@@ -66,3 +65,10 @@ passes validation is restored in the existing save format. Invalid records are s
 
 Modules can call `isClimbingReady()`, `getFreeSeats(towerIndex)` and `boardUnit(towerIndex, unitIndex)` on the public interface.
 `registerTowerCrewPolicy(callback)` lets one module choose the crew before the AI tower update tries proximity boarding. The callback receives the tower index and returns true to skip proximity boarding for that update. It can register before or after passenger support initializes.
+
+## Vanilla and Recommended
+
+Every option of the module is off by default, so the module alone plays like the original
+game. Two plugins in this repository form the Improved Siegeengines family in the launcher:
+`improved-siegeengines-recommended` (offered first) switches on the recommended settings, `improved-siegeengines-vanilla`
+keeps everything off. Plugins that build on the module set the options they need themselves.

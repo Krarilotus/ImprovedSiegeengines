@@ -44,12 +44,12 @@ local templates = require("templates")
 local MODULE_NAME = "improved-siegeengines"
 
 local DEFAULTS = {
-  catapults = { enabled = true, on_the_way = true, other_enemies = true, scatter = 50,
-    drop_destroyed = true },
-  tents = { free = true, range = true, variation = 10, engineers = true },
-  towers = { dock = true, orders = true, passengers = true, ai_passengers = true, passenger_lift = 4, passenger_slow = true },
-  shields = { enabled = true },
-  oil = { aim = true, spread = true, amount = 41, damage = true },
+  catapults = { enabled = false, on_the_way = false, other_enemies = false, scatter = 100,
+    drop_destroyed = false },
+  tents = { free = false, range = false, variation = 10, engineers = false },
+  towers = { dock = false, orders = false, passengers = false, ai_passengers = false, passenger_lift = 4, passenger_slow = false },
+  shields = { enabled = false },
+  oil = { aim = false, spread = false, amount = 41, damage = false },
   diagnostics = { log = false },
 }
 
