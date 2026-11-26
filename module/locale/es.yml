@@ -59,6 +59,8 @@ towers_group: Torres de asedio
 towers_group_details: En el juego original una torre de asedio solo puede acoplarse a un tramo recto de muro de al menos tres casillas con un cuadrado 3x3 libre delante, y la IA solo envía torres a muros de su propia lista de esos lugares —a menudo tarde, y nunca a castillos sin ellos.
 towers_orders: Las torres de asedio de la IA buscan su propio muro
 towers_orders_details: 'Una torre de asedio de la IA inactiva busca el muro enemigo más cercano al que pueda acoplarse (en 100 casillas) y va hacia allí; si no hay ninguno, prueba con un muro de la lista de la IA. Si eso tampoco funciona —no recibe orden, se detiene en camino o el castillo no admite acople en ningún punto— acompaña al ejército como un gran escudo hasta que haya un muro al alcance: primero con las patrullas, luego con la escolta de asedio, el ejército principal, una tropa a distancia elegida al azar y por último con las tropas de reserva.'
+towers_passenger_slow: Las torres de asedio cargadas son más lentas
+towers_passenger_slow_tooltip: 'Una torre de asedio con 5 pasajeros o más (la mitad de sus 9 plazas) avanza un nivel de velocidad más despacio.'
 towers_passenger_lift: Elevar dibujo de pasajeros (píxeles)
 towers_passenger_lift_tooltip: 'Solo afecta a dónde se dibujan los pasajeros: súbelo si parecen hundidos bajo la plataforma superior de una torre en movimiento, bájalo si flotan por encima. Su altura real —y el alcance de flechas desde abajo y espadas— es en cualquier caso la de una torre acoplada.'
 towers_passengers: Los soldados a pie viajan en torres de asedio

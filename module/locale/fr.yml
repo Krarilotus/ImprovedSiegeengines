@@ -59,6 +59,8 @@ towers_group: Tours de siège
 towers_group_details: Dans le jeu d'origine, une tour de siège ne peut accoster qu'un mur droit d'au moins trois cases de long avec un carré 3x3 dégagé devant, et l'IA n'envoie des tours que sur sa propre liste de tels emplacements — souvent tard, et jamais contre un château qui n'en possède pas.
 towers_orders: Les tours de siège de l'IA cherchent leur propre mur
 towers_orders_details: 'Une tour de siège de l''IA inactive cherche le mur ennemi accostable le plus proche (dans un rayon de 100 cases) et s''y rend ; s''il n''y en a aucun, elle peut essayer un mur de la liste propre de l''IA. Si cela n''aboutit à rien — aucun ordre ou arrêt en chemin — ou si aucun mur du château n''est accostable, elle accompagne l''armée comme un grand bouclier jusqu''à ce qu''un mur soit à portée : d''abord avec les patrouilles, sinon l''escorte de siège, sinon l''armée principale, sinon une troupe à distance aléatoire de l''armée d''attaque, et en dernier recours les renforts.'
+towers_passenger_slow: Les tours de siège chargées sont plus lentes
+towers_passenger_slow_tooltip: 'Une tour de siège avec 5 passagers ou plus (la moitié de ses 9 places) avance d''un cran de vitesse plus lentement.'
 towers_passenger_lift: Décalage vertical des passagers (pixels)
 towers_passenger_lift_tooltip: 'Affecte uniquement l''affichage des passagers : augmentez cette valeur s''ils semblent enfoncés sous la plateforme d''une tour en mouvement, réduisez-la s''ils flottent au-dessus. Leur hauteur réelle — et donc la façon dont les flèches d''en bas et les épées les atteignent — reste dans tous les cas celle d''une tour accostée.'
 towers_passengers: Les fantassins montent sur les tours de siège

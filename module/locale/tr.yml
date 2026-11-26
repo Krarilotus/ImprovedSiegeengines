@@ -59,6 +59,8 @@ towers_group: Kuşatma kuleleri
 towers_group_details: Değiştirilmemiş oyunda bir kuşatma kulesi yalnızca önünde boş 3x3 alanı bulunan en az üç kare uzunluğundaki düz bir sur parçasına yanaşabilir; yapay zekâ da kuleleri yalnızca kendi listesindeki bu yerlere gönderir — çoğu zaman geç, böyle yerleri olmayan kalelere ise hiç göndermez.
 towers_orders: Yapay zekâ kuşatma kuleleri kendi surunu bulur
 towers_orders_details: 'Boşta duran bir yapay zekâ kuşatma kulesi yanaşabileceği en yakın düşman surunu (100 kare içinde) arayıp oraya gider; yoksa yapay zekânın kendi listesinden bir sur dener. Bu da sonuç vermezse — emir almazsa, yolda takılırsa veya kaleye hiçbir yerden yanaşılamıyorsa — bir sur erişilebilir olana kadar büyük bir kalkan gibi orduya eşlik eder: varsa devriyelerle, yoksa kuşatma korumasıyla, yoksa ana orduyla, yoksa saldırı ordusundan rastgele bir menzilli birlikle ve hiçbiri kalmadıysa yedek birliklerle.'
+towers_passenger_slow: Dolu kuşatma kuleleri daha yavaştır
+towers_passenger_slow_tooltip: '5 veya daha fazla yolcusu olan bir kuşatma kulesi (9 yerinin yarısı) bir hız kademesi daha yavaş ilerler.'
 towers_passenger_lift: Yolcuları daha yukarı çiz (piksel)
 towers_passenger_lift_tooltip: 'Yalnızca yolcuların çizildiği konumu etkiler: hareket eden bir kuşatma kulesinin üst güvertesinin altında duruyor gibi görünürlerse artırın, havada süzülüyorlarsa azaltın. Gerçek yükseklikleri — ve aşağıdan okların ya da kılıçların onlara ulaşması — her hâlükârda yanaşmış bir kuleyle aynıdır.'
 towers_passengers: Piyadeler kuşatma kulelerine binebilir

@@ -59,6 +59,8 @@ towers_group: Ostromtornyok
 towers_group_details: Az alapjátékban egy ostromtorony csak legalább három mező hosszú egyenes falszakaszhoz tud kikötni, amely előtt szabad 3x3-as terület van, és az MI csak a saját listáján szereplő ilyen falakra küld tornyot — gyakran későn, olyan várakra pedig sosem, ahol nincs ilyen szakasz.
 towers_orders: Az MI ostromtornyai maguk keresnek falat
 towers_orders_details: 'Egy tétlen MI ostromtorony megkeresi a legközelebbi kiköthető ellenséges falat (100 mezőn belül) és odamegy; ha nincs ilyen, megpróbál egyet az MI saját listájáról. Ha az sem vezet sehova — nem kap parancsot, elakad, vagy a várhoz sehol nem lehet kikötni —, hatalmas pajzsként kíséri a sereget, amíg egy fal elérhető nem lesz: először a járőrökkel, majd az ostromvédelemmel, a fősereggel, egy véletlenszerű távolsági csapattal, végül a tartalék csapatokkal.'
+towers_passenger_slow: A megrakott ostromtornyok lassabbak
+towers_passenger_slow_tooltip: 'Az 5 vagy több utast szállító ostromtorony (9 helyének fele) egy sebességfokozattal lassabban halad.'
 towers_passenger_lift: Utasok feljebb rajzolása (pixel)
 towers_passenger_lift_tooltip: 'Csak az utasok vizuális pozícióját állítja: növeld, ha a mozgó torony teteje alá süllyednek, csökkentsd, ha felette lebegnek. A tényleges magasságuk — és hogy mennyire érik el őket az alulról érkező nyilak és kardok — ettől függetlenül a kikötött toronyéval azonos.'
 towers_passengers: Gyalogosok utazhatnak ostromtornyokon
