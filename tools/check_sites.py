@@ -196,6 +196,9 @@ def check(name, e):
     sh = e.scan(RAOB['AOB_SHIFT']); need(len(sh) == 1, '%s AOB_SHIFT: %d hits' % (name, len(sh)))
     st = e.scan(RAOB['AOB_STUCK']); need(len(st) == 1, '%s AOB_STUCK: %d hits' % (name, len(st)))
     if st: need(e.u32(st[0] + 4) == flags - 0x165160 + 0x363ED0, name + ' stuck test area map')
+    sp = e.scan(RAOB['AOB_SPEED']); need(len(sp) == 1, '%s AOB_SPEED: %d hits' % (name, len(sp)))
+    if sp: need(e.u32(e.u32(sp[0] + 4) + 58 * 4) in range(1, 10), name + ' tower speed')
+    d7 = e.scan('F6 04 5D ? ? ? ? 10 74 0D 83 BE'); need(len(d7) == 1 and e.u32(d7[0] + 3) == flags - 0x165160 + 0x301C80, '%s display bits %s' % (name, [hex(e.u32(x + 3)) for x in d7]))
     dv = e.scan(RAOB['AOB_DRAW_VANISH']); need(len(dv) == 1, '%s AOB_DRAW_VANISH: %d hits' % (name, len(dv)))
     if dv:
         need(e.u32(dv[0] + 2) == first - 0x490 - 0x8E + 0x68, name + ' draw vanish operand')
