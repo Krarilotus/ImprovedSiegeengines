@@ -1377,16 +1377,9 @@ function riders.enable(env)
   expectBytes(groupSelect + GROUP_NEXT[1], GROUP_NEXT[2], "selecting a control group")
 
   local function optionalOperand(pattern, description, offset)
-    local address, reason
-    if core.AOBScanUnique then
-      address, reason = core.AOBScanUnique(pattern)
-    else
-      address = core.scanForAOB(pattern)
-      if not address then reason = "not found"
-      elseif core.scanForAOB(pattern, address + 1) then reason = "found more than once" end
-    end
-    if not reason and address then return rd32(address + offset) end
-    log(WARNING, description .. " unavailable: " .. tostring(reason))
+    local resolved, address = pcall(scan, pattern, description)
+    if resolved then return rd32(address + offset) end
+    log(WARNING, "optional rider binding unavailable: " .. tostring(address))
     return 0
   end
   local tileBits = optionalOperand(AOB_TILE_BITS, "siege tower draw ordering", 3)

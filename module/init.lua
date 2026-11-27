@@ -305,10 +305,15 @@ local function wr16(address, value) core.writeSmallInteger(address, value & 0xFF
 local function byte(address) return core.readByte(address) & 0xFF end
 
 local function scan(pattern, purpose)
-  local ok, address = pcall(core.AOBScan, pattern)
-  if not ok or address == nil then
-    error(string.format("could not find %s", purpose), 0)
+  local address, reason
+  if core.AOBScanUnique then
+    address, reason = core.AOBScanUnique(pattern)
+  else
+    address = core.scanForAOB(pattern)
+    if not address then reason = "not found"
+    elseif core.scanForAOB(pattern, address + 1) then reason = "found more than once" end
   end
+  if not address or reason then error(purpose .. ": " .. tostring(reason), 0) end
   return address
 end
 
@@ -878,19 +883,11 @@ local function readCommon()
   G.valid = tms + MAP.VALID
   G.buildingIds = tms + MAP.BUILDINGS
   G.unitIds = tms + MAP.UNITS
-  G.teams = rd32(scan(AOB_TEAMS, "the team table") + TEAMS_OPERAND)
   G.ticks = rd32(scan(AOB_TICKS, "the tick counter") + TICKS_OPERAND)
 
   local cone = scan(AOB_CONE, "the siege engines' target search")
   G.buildingType = operand(cone, CONE_TYPE, "the building types")
-  G.buildingOwner = operand(cone, CONE_OWNER, "the building owners")
-  G.health = operand(cone, CONE_HEALTH, "the damageable buildings")
-  if G.buildingOwner - G.buildingType ~= B.OWNER - B.TYPE then
-    error("the building layout is not the one this module knows", 0)
-  end
-  G.buildings = G.buildingType - B.TYPE
-  G.buildingsState = G.buildings - B.STATE_OFFSET
-  G.range = rangeTable(scan(AOB_ACQUIRE, "the shooting code"))
+  G.cone = cone
 
   local command = scan(AOB_COMMAND, "the AI's siege engine orders")
   G.command = command
@@ -901,6 +898,23 @@ local function readCommon()
   G.units = first - U.STRIDE - U.TYPE
   G.maxUnits = (operand(command, CMD_LAST, "the unit array") - first) // U.STRIDE + 1
   G.unitsState = G.units - U.STATE_OFFSET
+
+  G.tileAt = assemble(templates.tileAt, { VALID = G.valid, ROWS = G.rows })
+end
+
+local function readSiege()
+  G.teams = rd32(scan(AOB_TEAMS, "the team table") + TEAMS_OPERAND)
+  local cone = G.cone
+  G.buildingOwner = operand(cone, CONE_OWNER, "the building owners")
+  G.health = operand(cone, CONE_HEALTH, "the damageable buildings")
+  if G.buildingOwner - G.buildingType ~= B.OWNER - B.TYPE then
+    error("the building layout is not the one this module knows", 0)
+  end
+  G.buildings = G.buildingType - B.TYPE
+  G.buildingsState = G.buildings - B.STATE_OFFSET
+  G.range = rangeTable(scan(AOB_ACQUIRE, "the shooting code"))
+
+  local command = G.command
   G.leaderOffset = operand(command, CMD_LEADER, "the troop leader") - G.tribes
   G.followOffset = operand(command, CMD_FOLLOW, "the shield link") - G.tribes
   G.followUidOffset = operand(command, CMD_FOLLOW_UID, "the shield link") - G.tribes
@@ -916,10 +930,7 @@ local function readCommon()
   wr32(G.data + 0x78, 0x7FFFFFFF)
   wr32(G.data + 0x7C, 0x7FFFFFFF)
 
-  local helpers = { VALID = G.valid, ROWS = G.rows, FLAGS = G.flags, BIDS = G.buildingIds,
-    BTYPE = G.buildingType }
-  G.tileAt = assemble(templates.tileAt, helpers)
-  helpers.TILEAT = G.tileAt
+  local helpers = { TILEAT = G.tileAt, FLAGS = G.flags, BIDS = G.buildingIds, BTYPE = G.buildingType }
   G.wallAt = assemble(templates.wallAt, helpers)
   G.clearAt = assemble(templates.clearAt, helpers)
 end
@@ -1310,24 +1321,33 @@ return {
     O.oilSpread = setting(config, "oil", "spread")
     O.oilAmount = number(config, "oil", "amount", 5, 200)
     O.oilDamage = setting(config, "oil", "damage")
-    if not (O.catapults or O.freeSpots or O.tentRange or O.dock or O.towerOrders or O.shields
-        or O.engineers or O.standing or O.scatter < 100 or O.oilAim or O.oilSpread
-        or O.passengers or O.aiPassengers) then
+    local siege = O.catapults or O.freeSpots or O.tentRange or O.dock or O.towerOrders or O.shields
+      or O.engineers or O.standing or O.scatter < 100 or O.oilAim or O.oilSpread
+    if not (siege or O.passengers or O.aiPassengers) then
       return
     end
     if not try("the whole module", readCommon) then return end
 
     local state = {}
-    state.catapults = O.catapults and try("catapults and trebuchets choosing targets", enableCatapults)
-    state.walking = O.onTheWay and state.catapults and try("catapults and trebuchets shooting on the way",
-      enableWalking)
-    state.scatter = O.scatter < 100 and try("catapult and trebuchet scatter", enableScatter)
-    state.standing = O.standing and try("siege engines dropping destroyed targets", enableStandingTargets)
-    state.tents = (O.freeSpots or O.tentRange) and try("siege tent placement", enableTents)
-    state.dock = O.dock and try("siege tower docking", enableDocking)
-    state.oil = (O.oilAim or O.oilSpread) and try("the oil engineers", enableOil)
-    state.commands = (O.towerOrders or O.shields or O.engineers)
-      and try("shield, siege tower and engineer orders", enableCommands)
+    if siege and try("siege engine changes", readSiege) then
+      state.catapults = O.catapults and try("catapults and trebuchets choosing targets", enableCatapults)
+      state.walking = O.onTheWay and state.catapults and try("catapults and trebuchets shooting on the way",
+        enableWalking)
+      state.scatter = O.scatter < 100 and try("catapult and trebuchet scatter", enableScatter)
+      state.standing = O.standing and try("siege engines dropping destroyed targets", enableStandingTargets)
+      state.tents = (O.freeSpots or O.tentRange) and try("siege tent placement", enableTents)
+      state.dock = O.dock and try("siege tower docking", enableDocking)
+      state.oil = (O.oilAim or O.oilSpread) and try("the oil engineers", enableOil)
+      state.commands = (O.towerOrders or O.shields or O.engineers)
+        and try("shield, siege tower and engineer orders", enableCommands)
+      wr32(G.data + 0x00, state.catapults and 1 or 0)
+      wr32(G.data + 0x04, (state.tents and O.freeSpots) and 1 or 0)
+      wr32(G.data + 0x08, (state.tents and O.tentRange) and 1 or 0)
+      wr32(G.data + 0x0C, O.variation)
+      wr32(G.data + 0x10, state.dock and 1 or 0)
+      wr32(G.data + 0x1F0, (O.log and state.catapults) and 1 or 0)
+      wr32(G.data + 0x1F8, O.otherEnemies and 1 or 0)
+    end
     state.riders = (O.passengers or O.aiPassengers) and try("siege tower passengers", function()
       require("riders").enable({ G = G, rd32 = rd32, wr32 = wr32, scan = scan, expectBytes = expectBytes,
         operand = operand, callTarget = callTarget, assemble = assemble, patch = patch,
@@ -1344,13 +1364,6 @@ return {
           localPlayer = OILAT.MOVE_LOCAL_PLAYER } })
     end)
 
-    wr32(G.data + 0x00, state.catapults and 1 or 0)
-    wr32(G.data + 0x04, (state.tents and O.freeSpots) and 1 or 0)
-    wr32(G.data + 0x08, (state.tents and O.tentRange) and 1 or 0)
-    wr32(G.data + 0x0C, O.variation)
-    wr32(G.data + 0x10, state.dock and 1 or 0)
-    wr32(G.data + 0x1F0, (O.log and state.catapults) and 1 or 0)
-    wr32(G.data + 0x1F8, O.otherEnemies and 1 or 0)
     if not state.commands then O.shields, O.towerOrders, O.engineers = false, false, false end
     state.towers = state.commands and O.towerOrders
     state.engineers = state.commands and O.engineers
