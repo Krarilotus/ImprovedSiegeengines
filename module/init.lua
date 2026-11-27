@@ -305,14 +305,7 @@ local function wr16(address, value) core.writeSmallInteger(address, value & 0xFF
 local function byte(address) return core.readByte(address) & 0xFF end
 
 local function scan(pattern, purpose)
-  local address, reason
-  if core.AOBScanUnique then
-    address, reason = core.AOBScanUnique(pattern)
-  else
-    address = core.scanForAOB(pattern)
-    if not address then reason = "not found"
-    elseif core.scanForAOB(pattern, address + 1) then reason = "found more than once" end
-  end
+  local address, reason = core.AOBScanUnique(pattern)
   if not address or reason then error(purpose .. ": " .. tostring(reason), 0) end
   return address
 end
@@ -387,16 +380,23 @@ end
 local function setting(config, group, name)
   local section = type(config) == "table" and config[group] or nil
   if type(section) == "table" and section[name] ~= nil then
-    if type(DEFAULTS[group][name]) == "boolean" then return section[name] == true end
-    return section[name]
+    local value = section[name]
+    if type(DEFAULTS[group][name]) ~= "boolean" or type(value) == "boolean" then return value end
+    log(ERROR, "Improved Siegeengines: " .. name .. " must be on or off. Using the default.")
   end
   return DEFAULTS[group][name]
 end
 
 local function number(config, group, name, low, high)
-  local value = tonumber(setting(config, group, name)) or DEFAULTS[group][name]
-  value = math.tointeger(math.floor(value)) or DEFAULTS[group][name]
-  return math.max(low, math.min(high, value))
+  local value = setting(config, group, name)
+  if type(value) ~= "number" then
+    log(ERROR, "Improved Siegeengines: " .. name .. " must be a number. Using the default.")
+  elseif value >= low and value <= high and value % 1 == 0 then
+    return value
+  else
+    log(WARNING, "Improved Siegeengines: " .. name .. " is outside the allowed values. Using the default.")
+  end
+  return DEFAULTS[group][name]
 end
 
 -- A cdecl function with no arguments that runs `callback` in lua.
@@ -1154,19 +1154,13 @@ local function enableOil()
   local fire = callTarget(pot + OILAT.OIL_POT_FIRE, "the oil pot's fire")
   expectBytes(fire + OILAT.FIRE_AT[1], OILAT.FIRE_AT[2], "the fire function")
   local move = scan(OILAT.AOB_MOVE_COMMAND, "the move order")
-  local flammable = callTarget(scan(AOB_CONE, "the siege engines' target search") + OILAT.CONE_FLAMMABLE,
+  local flammable = callTarget(G.cone + OILAT.CONE_FLAMMABLE,
     "the flammability test")
   local damage = scan(OILAT.AOB_BUILDING_DAMAGE, "the building damage")
 
   local entities = scan(OILAT.AOB_ENTITIES, "the entity update") - OILAT.ENTITIES_PROLOGUE_SIZE
-  local game
-  if pcall(expectBytes, entities, OILAT.ENTITIES_PROLOGUE[2], "the entity update") then
-    game = assemble(templates.oilGame, { RESUME = entities + OILAT.ENTITIES_PROLOGUE_SIZE })
-  elseif byte(entities) == 0xE9 and byte(entities + 5) == 0x90 then
-    game = relative(entities)   -- another module's hook, which runs the prologue
-  else
-    error("another module changed the start of the entity update", 0)
-  end
+  expectBytes(entities, OILAT.ENTITIES_PROLOGUE[2], "the entity update entry (already changed or unsupported)")
+  local game = assemble(templates.oilGame, { RESUME = entities + OILAT.ENTITIES_PROLOGUE_SIZE })
   G.oil = core.allocate(0x100, true)
   wr32(G.oil + 0x00, O.oilAim and 1 or 0)
   wr32(G.oil + 0x04, O.oilSpread and 1 or 0)
@@ -1221,8 +1215,7 @@ end
 local function try(purpose, fn)
   local ok, message = pcall(fn)
   if not ok then
-    log(ERROR, purpose .. " is off.")
-    log(WARNING, tostring(message))
+    log(ERROR, purpose .. " is off. " .. tostring(message))
   end
   return ok
 end
@@ -1344,7 +1337,7 @@ return {
       state.standing = O.standing and try("siege engines dropping destroyed targets", enableStandingTargets)
       state.tents = (O.freeSpots or O.tentRange) and ranges and try("siege tent placement", enableTents)
       state.dock = O.dock and try("siege tower docking", enableDocking)
-      state.oil = (O.oilAim or O.oilSpread) and try("the oil engineers", enableOil)
+      state.oil = (O.oilAim or O.oilSpread) and try("Oil engineer customization", enableOil)
       O.shields, O.towerOrders = O.shields and teams, O.towerOrders and teams
       state.commands = (O.towerOrders or O.shields or O.engineers)
         and try("shield, siege tower and engineer orders", enableCommands)
