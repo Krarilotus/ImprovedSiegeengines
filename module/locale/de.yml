@@ -13,12 +13,12 @@ catapults_other_enemies_details: Geräte können andere feindliche Gebäude besc
 fixes: Korrekturen
 improvements: Verbesserungen
 oil_aim: Öl auf freies Gelände gießen
-oil_aim_details: Wähle einen Öl-Ingenieur und gib den üblichen Angriffsbefehl auf freies Gelände.
+oil_aim_details: Wähle einen Baumeister mit Pech und gib den üblichen Angriffsbefehl auf freiem Gelände.
 oil_damage: Brennendes Öl beschädigt Gebäude
 oil_damage_details: Gebäude nehmen Schaden, wenn sich ausbreitendes Öl sie erreicht.
 oil_group: Brennendes Öl
 oil_spread: Öl breitet sich am Boden aus
-oil_spread_details: Ausgegossenes Öl breitet das Feuer über den umliegenden Boden aus.
+oil_spread_details: Ausgegossenes Pech trägt das Feuer auf den umliegenden Boden.
 shields_enabled: KI-Schilde bleiben bei eigenen Truppen
 shields_enabled_details: KI-Schilde folgen verbündeten Truppen, um sie zu schützen.
 tags.behavior: Verhalten
@@ -28,7 +28,7 @@ tents_free: Freie Belagerungszelt-Plätze wiederverwenden
 tents_free_details: Die KI kann neue Belagerungszelte auf nutzbaren, geräumten Plätzen errichten.
 tents_group: KI-Belagerungszelte
 tents_range: Fernkampf-Belagerungszelte in Schussreichweite bauen
-tents_range_details: Die KI platziert Katapult-, Tribok- und Feuerballisten-Zelte in Reichweite des Ziels.
+tents_range_details: Die KI stellt die Zelte für Katapulte, Triboke und Feuerballisten so auf, dass die Geräte ihr Ziel treffen können.
 towers_ai_passengers: KI besetzt Belagerungstürme mit Fernkämpfern
 towers_ai_passengers_details: KI-Belagerungstürme können Fernkämpfer an Bord nehmen.
 towers_dock: Belagerungstürme an mehr Mauern andocken
@@ -36,7 +36,7 @@ towers_dock_details: Befiehl einem Belagerungsturm, an einer Mauer anzudocken, a
 towers_group: Belagerungsturm-Besatzungen
 towers_orders: KI-Belagerungstürme wählen eine Mauer zum Andocken
 towers_orders_details: KI-Belagerungstürme suchen eine erreichbare Mauer und docken daran an.
-towers_passenger_slow: Türme ab fünf Passagieren verlangsamen
+towers_passenger_slow: Belagerungstürme ab fünf Mann verlangsamen
 towers_passenger_slow_tooltip: Ein Belagerungsturm wird langsamer, wenn er fünf oder mehr Soldaten trägt.
 towers_passengers: Truppen auf Belagerungstürmen befördern
-towers_passengers_details: Klicke mit ausgewählten Fußsoldaten auf einen eigenen Turm zum Einsteigen, oder wähle den Turm und klicke ihn mit dem Verlassen-Cursor zum Aussteigen an.
+towers_passengers_details: Wähle Fußsoldaten und klicke zum Einsteigen auf einen verbündeten Belagerungsturm. Wähle zum Aussteigen den Turm und klicke ihn mit dem Aussteigen-Mauszeiger an.

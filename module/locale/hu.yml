@@ -28,7 +28,7 @@ tents_free: Felszabadult ostromsátor-helyek újrahasználata
 tents_free_details: Az MI új ostromsátrakat építhet a megtisztított, használható helyekre.
 tents_group: MI-ostromsátrak
 tents_range: Távolsági ostromsátrak felállítása lőtávolon belül
-tents_range_details: Az MI a célpont lőtávolán belül helyezi el a katapult-, hajítógép- és tűzballiszta-sátrakat.
+tents_range_details: Az MI úgy helyezi el a katapultok, hajítógépek és tűzballiszták sátrait, hogy a gépek lőtávolságon belülről tüzelhessenek a célpontra.
 towers_ai_passengers: Az MI távolsági csapatokat ültet ostromtornyokba
 towers_ai_passengers_details: Az MI-ostromtornyok távolsági csapatokat vehetnek a fedélzetükre.
 towers_dock: Ostromtornyok dokkolása több falhoz
@@ -39,4 +39,4 @@ towers_orders_details: Az MI-ostromtornyok elérhető falat keresnek és hozzád
 towers_passenger_slow: Öt vagy több utassal a tornyok lassuljanak
 towers_passenger_slow_tooltip: Az ostromtorony lelassul, ha öt vagy több katonát szállít.
 towers_passengers: Csapatok szállítása ostromtornyokban
-towers_passengers_details: Kijelölt gyalogosokkal kattints egy saját toronyra a beszálláshoz, vagy jelöld ki a tornyot és kattints rá a kiszállás kurzorral.
+towers_passengers_details: A beszálláshoz jelöld ki a gyalogosokat, majd kattints egy baráti ostromtoronyra. A kiszálláshoz jelöld ki a tornyot, és a kiszállást jelző kurzorral kattints rá.

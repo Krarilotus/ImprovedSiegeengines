@@ -28,7 +28,7 @@ tents_free: 复用已清空的攻城帐篷点位
 tents_free_details: AI 可在已清理出的可用点位上建造新的攻城帐篷。
 tents_group: AI 攻城帐篷
 tents_range: 将远程攻城帐篷建在射程内
-tents_range_details: AI 会把投石车、重型投石机和火焰弩炮帐篷建在目标射程内。
+tents_range_details: AI 会把投石车、重型投石机和火焰弩炮的帐篷建在这些器械能打到目标的位置。
 towers_ai_passengers: AI 将远程部队装入攻城塔
 towers_ai_passengers_details: AI 攻城塔可以让远程部队登乘。
 towers_dock: 让攻城塔能停靠更多城墙

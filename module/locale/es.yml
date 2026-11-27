@@ -28,7 +28,7 @@ tents_free: Reutilizar emplazamientos despejados de tiendas de asedio
 tents_free_details: La IA puede construir nuevas tiendas de asedio en emplazamientos utilizables que haya despejado.
 tents_group: Tiendas de asedio de la IA
 tents_range: Ubicar tiendas de asedio a distancia dentro del alcance
-tents_range_details: La IA coloca tiendas de catapultas, trabuquetes y balistas de fuego al alcance del objetivo.
+tents_range_details: La IA coloca las tiendas de catapultas, trabuquetes y balistas de fuego donde las máquinas puedan alcanzar el objetivo.
 towers_ai_passengers: La IA embarca tropas a distancia en torres de asedio
 towers_ai_passengers_details: Las torres de asedio de la IA pueden llevar tropas a distancia a bordo.
 towers_dock: Acoplar torres de asedio en más murallas
@@ -39,4 +39,4 @@ towers_orders_details: Las torres de asedio de la IA buscan una muralla alcanzab
 towers_passenger_slow: Ralentizar torres que lleven cinco o más
 towers_passenger_slow_tooltip: Una torre de asedio se vuelve más lenta cuando lleva cinco o más tropas.
 towers_passengers: Llevar tropas en torres de asedio
-towers_passengers_details: Haz clic en una torre aliada con infantería seleccionada para embarcar, o selecciona la torre y haz clic con el cursor de salir para desembarcar.
+towers_passengers_details: Selecciona infantería y haz clic en una torre de asedio aliada para subirla. Para bajarla, selecciona la torre y haz clic en ella con el cursor de salida.

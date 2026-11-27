@@ -28,7 +28,7 @@ tents_free: Boşalan kuşatma çadırı yerlerini yeniden kullan
 tents_free_details: Yapay zekâ temizlediği uygun yerlere yeni kuşatma çadırları kurabilir.
 tents_group: Yapay zekâ kuşatma çadırları
 tents_range: Menzilli kuşatma çadırlarını atış menziline kur
-tents_range_details: Yapay zekâ mancınık, trebuşe ve ateş balistası çadırlarını hedefin menziline yerleştirir.
+tents_range_details: Yapay zekâ mancınık, trebuşe ve ateş balistası çadırlarını, araçların hedefi vurabileceği mesafeye kurar.
 towers_ai_passengers: Yapay zekâ kuşatma kulelerine menzilli birlik bindirir
 towers_ai_passengers_details: Yapay zekâ kuşatma kuleleri menzilli birlikleri taşıyabilir.
 towers_dock: Kuşatma kulelerini daha fazla sura yanaştır
@@ -39,4 +39,4 @@ towers_orders_details: Yapay zekâ kuşatma kuleleri ulaşabilecekleri bir sur b
 towers_passenger_slow: Beş veya daha fazla birlik taşıyan kuleleri yavaşlat
 towers_passenger_slow_tooltip: Bir kuşatma kulesi beş veya daha fazla birlik taşıdığında yavaşlar.
 towers_passengers: Kuşatma kulelerinde birlik taşı
-towers_passengers_details: Binmek için piyadeler seçiliyken dost kuleye tıklayın; inmek için kuleyi seçip araçtan inme imleciyle üzerine tıklayın.
+towers_passengers_details: Piyadeleri bindirmek için onları seçip dost bir kuşatma kulesine tıklayın. İndirmek için kuleyi seçip araçtan inme imleciyle kuleye tıklayın.
