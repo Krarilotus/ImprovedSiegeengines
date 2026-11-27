@@ -1,42 +1,42 @@
 ai: MI
 balance_changes: Egyensúlymódosítások
 bugfixes: Hibajavítások
-catapults_drop_destroyed: Lerombolt épületek további lövésének leállítása
-catapults_drop_destroyed_details: Egy épületre célzó ostromgép (éghető célra lövő tűzballiszta vagy épületre vezényelt katapult) az épület megsemmisülése után is tovább lőtte az üres helyet, és sosem váltott célpontot — a játék csak az épület azonosítóját figyelte, amely megmarad, amíg másik épület át nem veszi. Mostantól a lerombolt célpontot elengedi és újat keres. Minden ostromgépre érvényes, a tűzballisztákra is.
-catapults_enabled: A katapultok és hajítógépek maguk választanak célpontot
-catapults_enabled_details: 'Kikapcsolva: az MI katapultjai és hajítógépei pontosan úgy választanak célpontot, mint az alapjátékban.'
-catapults_group: Katapultok és hajítógépek
-catapults_on_the_way: A katapultok és hajítógépek útközben megállnak lőni
-catapults_on_the_way_details: Az alapjátékban egy ostromgép csak álló helyzetben keres célpontot, így a mozgó MI-katapult — portyán, seregvonuláskor vagy a falak felé araszolva — elgurul minden lőtávon belüli cél mellett. Ezzel a beállítással a mozgó MI-katapult vagy hajítógép időnként körülnéz, és amint ellenséges fal, torony, kapuház vagy épület lőtávba kerül, megáll és lő a fenti célválasztással. A fenti beállítást igényli.
-catapults_other_enemies: Más lőtávon belüli ellenségek lövése is
-catapults_other_enemies_details: Az MI katapultja vagy hajítógépe csak arra a játékosra lő, akit éppen ostromol. Ha annak semmije nincs lőtávon belül, elgurul más ellenségek falai és épületei mellett. Ezzel a beállítással azokra is lő — az ostromlott játékos falai és épületei továbbra is elsőbbséget élveznek, ha van lőtávon belül.
+catapults_drop_destroyed: Tüzelés leállítása elpusztult célpontokra
+catapults_drop_destroyed_details: Az ostromgépek abbahagyják a lövést, amint a célzott épület elpusztult.
+catapults_enabled: MI katapultok és hajítógépek célzása ostromcélpontokra
+catapults_enabled_details: A távolsági ostromgépek lőtávolból veszik célba az ellenséges védműveket.
+catapults_group: MI katapultok és hajítógépek
+catapults_on_the_way: Megállás tüzelésre útközben
+catapults_on_the_way_details: Az ostromgépek lőnek, amint egy ostromcélpont lőtávolba kerül.
+catapults_other_enemies: Lövés más, lőtávolban lévő ellenségekre is
+catapults_other_enemies_details: Az ostromgépek más ellenséges épületekre is lőhetnek, ha a kijelölt ellenfél lőtávolon kívül van.
 fixes: Javítások
 improvements: Fejlesztések
-oil_aim: Olaj öntése csak nyílt talajra
-oil_aim_details: 'A mérnök csak oda önt olajat, ahol az égő olaj meg is marad: nyílt talajra, nem falra, lépcsőre, toronyra vagy más épületre. Önállóan csak ilyen talajon álló ellenségre öntenek. Ha nem megfelelő mezőre küldöd, a mérnök a legközelebbi alkalmas talajra önt legfeljebb 4 mezőn belül, a célod irányától legfeljebb 45 fokra. Ha nincs ilyen, megtartja az olajat és „lehetetlen hely” üzenetet mond, akárcsak megközelíthetetlen parancsnál. A kondér sem csúszik már el a célzott ponttól.'
-oil_damage: Az égő olaj sebzi az érintett épületeket
-oil_damage_details: 'Az árnyoldal: az épületek, amelyeknek az olaj nekiütközik, egyszeri sebzést kapnak — az életerejük egyharmadát a becsapódási pontnál, és kevesebbet távolabb. A saját épületeid is. Minden éghető épület érintett: kunyhók, műhelyek, farmok, malmok, magtár, fegyvertár, kaszárnya, piac, istállók, céhek, kápolna, templom, katedrális, kocsma, pékség, kovácsműhely, olajfőző stb. A falak, tornyok, kapuházak, vártornyok, raktárak, kutak és ostromsátrak nem sérülnek. A tűz terjedése változatlan (a saját tüzed továbbra sem gyújtja fel a saját épületeidet).'
-oil_group: Olajos mérnökök
-oil_spread: Az olaj a mennyisége szerint terül szét
-oil_spread_details: 'Egy kondér olaja szétterül a talajon, amelyre esik: ugyanannyi olaj mindig ugyanannyi mezőt fed le, és csak hasonló magasságú mezők között folyik, soha nem fel vagy le falakon vagy meredek szintkülönbségeken. Onnan indul, ahová a mérnök célzott — akkor is, ha a kondér arra a falra esik, amelyen áll. Nyílt terepen ez pontosan az alapjáték öntése: ugyanaz a tűz, fellobbanás és terjedés. Szűk átjáróban, ahol messzebbre folyik, úgy viselkedik, mintha több kondért öntöttek volna végig: 5 mezőnként újabb tűz lobban fel a kondér becsapódási hangjával.'
-shields_enabled: A pajzsok saját csapataikkal haladnak
-shields_enabled_details: Az MI hordozható pajzsai az árokbetemető csapatokhoz, a támadó sereg távolsági ostromgépeihez (az otthon tartottakhoz nem) és a távolsági egységeihez (íjászok, számszeríjászok, parittyások, lovasíjászok, tűzhajítók) mennek — kizárólag saját vagy szövetséges egységekhez, a fősereg közelharcosaihoz sosem. A tartalék csapatok csak akkor kapnak pajzsot, ha ezekből már egy sincs. A pajzsok egyenletesen oszlanak meg a helyek között (minden új pajzs oda megy, ahol a legkevesebb van, és ott marad, amíg az aránya nem haladja meg a többit). Ha senki sincs, a pajzs megáll és várakozik.
+oil_aim: Olaj kiöntése nyílt terepre
+oil_aim_details: Jelölj ki egy olajos mérnököt, és adj ki szokásos támadási parancsot nyílt terepre.
+oil_damage: Az égő olaj sebzi az épületeket
+oil_damage_details: Az épületek sérülnek, ha a terjedő olaj eléri őket.
+oil_group: Égő olaj
+oil_spread: Az olaj szétterjed a talajon
+oil_spread_details: A kiöntött olaj továbbterjeszti a tüzet a környező talajra.
+shields_enabled: Az MI-pajzsok a saját csapataikkal maradnak
+shields_enabled_details: Az MI-pajzsok követik a szövetséges csapatokat, hogy védjék őket.
 tags.behavior: Viselkedés
-tents_engineers: A mérnökök mindig bejutnak a sátrukba
-tents_engineers_details: 'Az alapjátékban az a mérnök, akinek el van zárva az ostromsátor bejárata, feladja és tétlenül ácsorog, a sátor pedig sosem készül el. Mostantól minden MI-körben ellenőrzésre kerül a még mérnökre váró sátrak bejárata — az elzárt bejárat szabad oldalra költözik —, és újra mérnököket kapnak: először azokat, akik feladták vagy útközben elakadtak, majd a közeli tétlen mérnököket (60 mezőn belül). A teljesen körbefalazott sátor megvárja, amíg nyílik egy út, majd megkapja a mérnökeit.'
-tents_free: Biztonságos sátorhelyek újrafelhasználása
-tents_free_details: Egy sátorhely újra használható, amint az ott építő csapat elment, semmi sem áll rajta, és nincs elég közel ellenséges katona, aki megtámadhatna ott egy ostromgépet (íjászok, számszeríjászok, parittyások, lovasíjászok és tűzhajítók a lőtávjukon belül — tornyokról is —, valamint bármely kardos vagy lándzsás 10 mezőn belül). A balliszták nem számítanak, mert hatalmas lőtávjuk szinte minden helyet kizárna.
-tents_group: Ostromsátrak
-tents_range: Távolsági ostromgépek sátrainak elhelyezése lőtáv alapján
-tents_range_details: 'A katapultok, hajítógépek és tűzballiszták sátrai oda kerülnek, ahonnan elérik a várat: az ellenséges falaktól, tornyoktól és kapuházaktól mérve kicsivel a lőtávon belül, hogy beljebb lévő célokat is elérjenek. Az ostromtornyok, faltörő kosok és pajzsok sátrai a megszokott módon kerülnek le. Ha nincs alkalmas hely, az MI a régi módon épít.'
-towers_ai_passengers: Az MI ostromtornyai távolsági csapatokat szállítanak
-towers_ai_passengers_details: Egy MI ostromtorony felveszi a tőle 3 mezőn belül álló saját íjászait, számszeríjászait, parittyásait és tűzhajítóit (legfeljebb 9 főt), és a falhoz viszi őket.
-towers_dock: Az ostromtornyok több falhoz tudnak kikötni
-towers_dock_details: Ha a játék nem talál kikötőhelyet, a torony a 3x3-as területének sarkával átlós falhoz is kiköt, vagy ha az sem megy, ugyanazon a falon legfeljebb három mezővel arrébb. Minden ostromtoronyra érvényes, a sajátjaidra is.
-towers_group: Ostromtornyok
-towers_orders: Az MI ostromtornyai maguk keresnek falat
-towers_orders_details: 'Egy tétlen MI ostromtorony megkeresi a legközelebbi kiköthető ellenséges falat (100 mezőn belül) és odamegy; ha nincs ilyen, megpróbál egyet az MI saját listájáról. Ha az sem vezet sehova — nem kap parancsot, elakad, vagy a várhoz sehol nem lehet kikötni —, hatalmas pajzsként kíséri a sereget, amíg egy fal elérhető nem lesz: először a járőrökkel, majd az ostromvédelemmel, a fősereggel, egy véletlenszerű távolsági csapattal, végül a tartalék csapatokkal.'
-towers_passenger_slow: A megrakott ostromtornyok lassabbak
-towers_passenger_slow_tooltip: 'Az 5 vagy több utast szállító ostromtorony (9 helyének fele) egy sebességfokozattal lassabban halad.'
-towers_passengers: Gyalogosok utazhatnak ostromtornyokon
-towers_passengers_details: 'Jelölj ki gyalogosokat és mutass egy saját ostromtornyodra: megjelennek a felszállási nyilak, egy kattintással odamennek. Legfeljebb 9 katona mászik fel a tetejére és utazik vele — az íjászok és számszeríjászok menet közben is lőnek. Fent ugyanolyan védettek, mint egy kikötött tornyon: az alulról jövő nyilak csak harmadakkora sebzést okoznak, a kardok pedig nem érik el őket. Utazás közben nem jelölhetők ki. Kikötéskor a tornyon maradva harcolnak tovább; ha a torony megsemmisül, vele együtt meghalnak. Jelöld ki a tornyot és mutass rá a kiszálláshoz: az első kattintás az utasokat teszi le köré, a második a megszokott módon a mérnököket.'
+tents_engineers: A mérnökök bemehessenek a sátraikba
+tents_engineers_details: A beosztott MI-mérnökök elérik és elfoglalják az ostromsátraikat.
+tents_free: Felszabadult ostromsátor-helyek újrahasználata
+tents_free_details: Az MI új ostromsátrakat építhet a megtisztított, használható helyekre.
+tents_group: MI-ostromsátrak
+tents_range: Távolsági ostromsátrak felállítása lőtávolon belül
+tents_range_details: Az MI a célpont lőtávolán belül helyezi el a katapult-, hajítógép- és tűzballiszta-sátrakat.
+towers_ai_passengers: Az MI távolsági csapatokat ültet ostromtornyokba
+towers_ai_passengers_details: Az MI-ostromtornyok távolsági csapatokat vehetnek a fedélzetükre.
+towers_dock: Ostromtornyok dokkolása több falhoz
+towers_dock_details: Utasíts egy ostromtornyot, hogy dokkoljon egy falhoz, akár átlós falakhoz is.
+towers_group: Ostromtorony-személyzetek
+towers_orders: Az MI-ostromtornyok falat választanak a dokkoláshoz
+towers_orders_details: Az MI-ostromtornyok elérhető falat keresnek és hozzádokkolnak.
+towers_passenger_slow: Öt vagy több utassal a tornyok lassuljanak
+towers_passenger_slow_tooltip: Az ostromtorony lelassul, ha öt vagy több katonát szállít.
+towers_passengers: Csapatok szállítása ostromtornyokban
+towers_passengers_details: Kijelölt gyalogosokkal kattints egy saját toronyra a beszálláshoz, vagy jelöld ki a tornyot és kattints rá a kiszállás kurzorral.

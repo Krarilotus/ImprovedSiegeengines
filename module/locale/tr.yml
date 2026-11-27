@@ -1,42 +1,42 @@
 ai: Yapay zekâ
 balance_changes: Denge değişiklikleri
 bugfixes: Hata düzeltmeleri
-catapults_drop_destroyed: Yıkılan binalara ateş etmeyi bırak
-catapults_drop_destroyed_details: Bir binaya nişan alan kuşatma aracı (yanan bir yapıya ateş eden ateş balistası veya bir binaya yönlendirilen mancınık), bina yıkıldıktan sonra da boş yere ateş etmeye devam ediyor ve asla yeni hedefe geçmiyordu — oyun yalnızca başka bir bina alana dek sabit kalan bina numarasını kontrol ediyordu. Artık yıkılan hedef bırakılır ve araç yeni bir hedef arar. Ateş balistaları dâhil tüm kuşatma araçları için geçerlidir.
-catapults_enabled: Mancınıklar ve trebuşeler kendi hedeflerini seçer
-catapults_enabled_details: 'Kapalı: yapay zekâ mancınıkları ve trebuşeleri hedeflerini değiştirilmemiş oyundaki gibi seçer.'
-catapults_group: Mancınıklar ve trebuşeler
-catapults_on_the_way: Mancınıklar ve trebuşeler yolda durup ateş eder
-catapults_on_the_way_details: Değiştirilmemiş oyunda bir kuşatma aracı yalnızca dururken hedef arar; bu yüzden hareket hâlindeki bir yapay zekâ mancınığı — akında, ordu yürüyüşünde veya surlara yaklaşırken — menzilindeki her şeyin yanından geçip gider. Bu ayarla yürüyen bir yapay zekâ mancınığı veya trebuşesi birkaç saniyede bir etrafına bakar ve menzile düşman suru, kulesi, kapı binası veya binası girer girmez durup yukarıdaki kurala göre ateş eder. Yukarıdaki ayarı gerektirir.
+catapults_drop_destroyed: Yıkılan hedeflere ateş etmeyi bırak
+catapults_drop_destroyed_details: Kuşatma araçları nişan aldıkları bina yıkıldığında ateş etmeyi bırakır.
+catapults_enabled: Yapay zekâ mancınıklarını ve trebuşelerini kuşatma hedeflerine yönelt
+catapults_enabled_details: Menzilli kuşatma araçları atış menzilinden düşman savunmalarına nişan alır.
+catapults_group: Yapay zekâ mancınıkları ve trebuşeleri
+catapults_on_the_way: Yolda ateş etmek için dur
+catapults_on_the_way_details: Bir kuşatma hedefi menzile girdiğinde araçlar ateş eder.
 catapults_other_enemies: Menzildeki diğer düşmanlara da ateş et
-catapults_other_enemies_details: Bir yapay zekâ mancınığı veya trebuşesi yalnızca kuşattığı oyuncuya ateş eder. O oyuncudan menzilde hiçbir şey yoksa diğer düşmanların surları ve binalarının yanından geçip gider. Bu ayar açıkken onlara da ateş eder; ancak kuşatılan oyuncunun surları ve binaları menzilde olduğu sürece önceliğini korur.
+catapults_other_enemies_details: Atanan rakip menzil dışındayken araçlar diğer düşman binalarına ateş edebilir.
 fixes: Düzeltmeler
 improvements: İyileştirmeler
-oil_aim: Yağı yalnızca açık zemine dök
-oil_aim_details: 'Bir mühendis yağı yalnızca yanabileceği yere döker: açık zemine; asla sur, merdiven, kule veya başka bir binaya değil. Mühendisler kendi başlarına yalnızca böyle bir zeminde duran düşmanlara yağ döker. Uygun olmayan bir noktaya gönderdiğinde, mühendis senin noktanla arasındaki çizgiden en fazla 45 derece sapan ve en çok 4 kare uzaktaki en yakın zemine döker. Öyle bir yer yoksa yağını saklar ve birimlerin gidemediği yerlerdeki gibi «olanaksız konum» der. Kazan da artık döküldüğü noktadan yana kaymaz.'
-oil_damage: Yanan yağ temas ettiği binalara hasar verir
-oil_damage_details: 'Diğer yüzü: yağın ulaştığı binalar temas anında bir kez hasar alır — kazanın düştüğü noktada canlarının üçte biri, yağ boyunca uzaklaştıkça daha az. Kendi binaların da dâhil. Oyunun ateşinin tutuşturabildiği tüm binalar buna girer: kulübeler, atölyeler, çiftlikler, değirmenler, ambar, cephanelik, kışla, pazar, ahırlar, loncalar, şapel, kilise, katedral, han, fırın, demirci, yağ kazanı vb. Surlar, kuleler, kapı binaları, iç kaleler, depolar, kuyular ve kuşatma çadırları hasar almaz. Ateşin kendisi değiştirilmemiş oyundaki gibi yayılır (kendi ateşin kendi binalarını asla tutuşturmaz).'
-oil_group: Yağ mühendisleri
-oil_spread: Yağ miktarına göre yayılır
-oil_spread_details: 'Bir kazanın yağı düştüğü zemin boyunca akar: aynı miktardaki yağ aynı sayıda kareyi kaplar ve yalnızca benzer yükseklikteki kareler arasında akar, asla surdan veya dik basamaktan yukarı ya da aşağı gitmez. Mühendisin nişan aldığı yerden başlar — kazan kendi durduğu sura düşse bile. Açık zeminde bu tamamen orijinal oyundaki dökümle aynıdır (aynı ateş, parlayış ve yayılım). Dar bir geçitte daha uzağa aktığında boyunca ardışık kazanlar dökülmüş gibi görünür: yağ ilerledikçe her 5 karede bir, parlayışı ve düşme sesiyle yeni bir ateş başlar.'
-shields_enabled: Kalkanlar kendi birlikleriyle yürür
-shields_enabled_details: Yapay zekâ taşınabilir kalkanları hendek dolduran birliklere, saldırı ordusunun menzilli kuşatma araçlarına (yapay zekânın evde tuttuklarına değil) ve menzilli birliklerine (okçular, arbaletçiler, sapancılar, atlı okçular, ateş atıcılar) gider — yalnızca kendi oyuncusunun veya müttefikinin birimlerine, asla ana ordunun yakın dövüşçülerine değil. Yedek birlikler yalnızca bunların hiçbiri kalmadığında kalkan alır. Kalkanlar mevcut yerlere eşit dağıtılır (her yeni kalkan en az kalkan olan yere gider ve payını aşmadıkça orada kalır). Kimse yoksa kalkan durup bekler.
+oil_aim: Açık alana yağ dök
+oil_aim_details: Yağ taşıyan bir mühendis seçin ve açık alana normal saldırı emri verin.
+oil_damage: Yanan yağ binalara zarar verir
+oil_damage_details: Yayılan yağ binalara ulaştığında hasar verir.
+oil_group: Yanan yağ
+oil_spread: Yağ zemine yayılır
+oil_spread_details: Dökülen yağ ateşi yakındaki zemine yayar.
+shields_enabled: Yapay zekâ kalkanları kendi birlikleriyle kalır
+shields_enabled_details: Yapay zekâ kalkanları dost birlikleri korumak için onları izler.
 tags.behavior: Davranış
-tents_engineers: Mühendisler çadırlarına her zaman ulaşır
-tents_engineers_details: 'Değiştirilmemiş oyunda bir kuşatma çadırının girişine yolu kapanan mühendis vazgeçip boş boş bekler ve çadırın aracı asla yapılmaz. Artık her yapay zekâ turunda hâlâ mühendisi eksik olan çadırın girişi oyunun kendi kuralıyla kontrol edilir — kapalı giriş boş bir kenara taşınır — ve mühendisler yeniden gönderilir: önce vazgeçen veya yolda takılanlar, sonra yakındaki boş mühendisler (60 kare içinde). Dört yanı duvarla çevrili bir çadır yol açılana dek bekler, sonra mühendislerini alır.'
-tents_free: Güvenli çadır noktalarını yeniden kullan
-tents_free_details: Orada inşa eden birlik gittikten, üzerinde hiçbir şey kalmadıktan ve oradaki bir araca saldırabilecek kadar yakın düşman askeri olmadıktan sonra bir çadır noktası yeniden kullanılabilir (menzilleri dâhilindeki okçular, arbaletçiler, sapancılar, atlı okçular ve ateş atıcılar — kuledekiler dâhil — ile 10 kare içindeki kılıçlı veya mızraklılar). Balistalar sayılmaz; menzilleri o kadar uzundur ki neredeyse her noktayı elerdi.
-tents_group: Kuşatma çadırları
-tents_range: Menzilli araç çadırlarını menzile göre yerleştir
-tents_range_details: 'Mancınık, trebuşe ve ateş balistası çadırları aracın kaleye yetişebileceği yerlere konur: düşman surlarından, kulelerinden ve kapı binalarından ölçülerek menzilin biraz içine yerleştirilir, böylece içerideki hedeflere de ulaşır. Kuşatma kulesi, koçbaşı ve kalkan çadırları eskisi gibi yerleştirilir. Uygun yer yoksa yapay zekâ eskisi gibi kurar.'
-towers_ai_passengers: Yapay zekâ kuşatma kuleleri menzilli birlikleri bindirir
-towers_ai_passengers_details: Bir yapay zekâ kuşatma kulesi 3 kare yakınında duran kendi okçularını, arbaletçilerini, sapancılarını ve ateş atıcılarını (en fazla 9 asker) üzerine alır ve sura taşır.
-towers_dock: Kuşatma kuleleri daha fazla sura yanaşır
-towers_dock_details: Oyun bir yanaşma noktası bulamadığında kule 3x3 alanının köşesiyle çapraz bir sura, o da olmazsa aynı sur boyunca en fazla üç kare öteye yanaşır. Oyuncununkiler dâhil tüm kuşatma kuleleri için geçerlidir.
-towers_group: Kuşatma kuleleri
-towers_orders: Yapay zekâ kuşatma kuleleri kendi surunu bulur
-towers_orders_details: 'Boşta duran bir yapay zekâ kuşatma kulesi yanaşabileceği en yakın düşman surunu (100 kare içinde) arayıp oraya gider; yoksa yapay zekânın kendi listesinden bir sur dener. Bu da sonuç vermezse — emir almazsa, yolda takılırsa veya kaleye hiçbir yerden yanaşılamıyorsa — bir sur erişilebilir olana kadar büyük bir kalkan gibi orduya eşlik eder: varsa devriyelerle, yoksa kuşatma korumasıyla, yoksa ana orduyla, yoksa saldırı ordusundan rastgele bir menzilli birlikle ve hiçbiri kalmadıysa yedek birliklerle.'
-towers_passenger_slow: Dolu kuşatma kuleleri daha yavaştır
-towers_passenger_slow_tooltip: '5 veya daha fazla yolcusu olan bir kuşatma kulesi (9 yerinin yarısı) bir hız kademesi daha yavaş ilerler.'
-towers_passengers: Piyadeler kuşatma kulelerine binebilir
-towers_passengers_details: 'Piyadeleri seçip kuşatma kulelerinden birine işaret et: aracı kullanma okları görünür ve tıklayınca kuleye giderler. Ulaştıkça en fazla 9 asker tepeye çıkıp birlikte ilerler — okçular ve arbaletçiler kule giderken bile ateş eder. Yukarıda yanaşmış bir kuledeki kadar güvendedirler: aşağıdan gelen oklar üçte bir hasar verir ve kılıçlar ulaşamaz. Yolculuk sırasında seçilemezler. Kule bir sura yanaştığında üstünde kalıp devam ederler; kule yıkılırsa onunla birlikte ölürler. Kuleyi seçip üzerine işaret ederek indirme oklarını aç: ilk tık yolcuları etrafına indirir, ikinci tık eskisi gibi mühendisleri indirir.'
+tents_engineers: Mühendislerin çadırlarına girmesini sağla
+tents_engineers_details: Atanan yapay zekâ mühendisleri kuşatma çadırlarına ulaşıp girebilir.
+tents_free: Boşalan kuşatma çadırı yerlerini yeniden kullan
+tents_free_details: Yapay zekâ temizlediği uygun yerlere yeni kuşatma çadırları kurabilir.
+tents_group: Yapay zekâ kuşatma çadırları
+tents_range: Menzilli kuşatma çadırlarını atış menziline kur
+tents_range_details: Yapay zekâ mancınık, trebuşe ve ateş balistası çadırlarını hedefin menziline yerleştirir.
+towers_ai_passengers: Yapay zekâ kuşatma kulelerine menzilli birlik bindirir
+towers_ai_passengers_details: Yapay zekâ kuşatma kuleleri menzilli birlikleri taşıyabilir.
+towers_dock: Kuşatma kulelerini daha fazla sura yanaştır
+towers_dock_details: Bir kuşatma kulesine çapraz surlar dâhil bir sura yanaşma emri verin.
+towers_group: Kuşatma kulesi mürettebatları
+towers_orders: Yapay zekâ kuşatma kuleleri yanaşacak sur seçer
+towers_orders_details: Yapay zekâ kuşatma kuleleri ulaşabilecekleri bir sur bulup yanaşır.
+towers_passenger_slow: Beş veya daha fazla birlik taşıyan kuleleri yavaşlat
+towers_passenger_slow_tooltip: Bir kuşatma kulesi beş veya daha fazla birlik taşıdığında yavaşlar.
+towers_passengers: Kuşatma kulelerinde birlik taşı
+towers_passengers_details: Binmek için piyadeler seçiliyken dost kuleye tıklayın; inmek için kuleyi seçip araçtan inme imleciyle üzerine tıklayın.
