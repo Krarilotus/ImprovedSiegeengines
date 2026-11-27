@@ -1366,6 +1366,7 @@ function riders.enable(env)
     alt = rd32(shift + 2) + SHIFT_TO_ALT
   else
     alt = core.allocate(4, true)
+    log(ERROR, "Using Alt to keep troops off siege towers is off.")
     log(WARNING, "improved-siegeengines: Alt does not keep troops off a siege tower: " .. tostring(shift))
   end
   local stuck = scan(AOB_STUCK, "the stuck unit test")
@@ -1379,7 +1380,8 @@ function riders.enable(env)
   local function optionalOperand(pattern, description, offset)
     local resolved, address = pcall(scan, pattern, description)
     if resolved then return rd32(address + offset) end
-    log(WARNING, "optional rider binding unavailable: " .. tostring(address))
+    log(ERROR, description .. " is off.")
+    log(WARNING, tostring(address))
     return 0
   end
   local tileBits = optionalOperand(AOB_TILE_BITS, "siege tower draw ordering", 3)

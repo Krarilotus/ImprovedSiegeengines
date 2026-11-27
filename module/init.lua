@@ -1221,7 +1221,8 @@ end
 local function try(purpose, fn)
   local ok, message = pcall(fn)
   if not ok then
-    log(WARNING, string.format("%s: %s is off: %s", MODULE_NAME, purpose, tostring(message)))
+    log(ERROR, purpose .. " is off.")
+    log(WARNING, tostring(message))
   end
   return ok
 end
