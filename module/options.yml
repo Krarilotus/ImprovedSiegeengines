@@ -2,12 +2,8 @@ meta:
   version: 1.0.0
 options:
 - display: GroupBox
-  category:
-  - '{{ai}}'
-  - '{{improvements}}'
-  header: '{{catapults_group}}'
-  text: '{{catapults_group_details}}'
   hasHeader: true
+  header: '{{catapults_group}}'
   children:
   - url: improved-siegeengines.catapults.enabled
     name: improved-siegeengines-catapults-enabled
@@ -17,168 +13,26 @@ options:
       type: boolean
       value: false
     header: '{{catapults_enabled}}'
-  - url: improved-siegeengines.catapults.on_the_way
-    name: improved-siegeengines-catapults-on-the-way
-    text: '{{catapults_on_the_way_details}}'
-    display: UCP2Switch
-    contents:
-      type: boolean
-      value: false
-    header: '{{catapults_on_the_way}}'
-  - url: improved-siegeengines.catapults.other_enemies
-    name: improved-siegeengines-catapults-other-enemies
-    text: '{{catapults_other_enemies_details}}'
-    display: UCP2Switch
-    contents:
-      type: boolean
-      value: false
-    header: '{{catapults_other_enemies}}'
-  - url: improved-siegeengines.catapults.scatter
-    name: improved-siegeengines-catapults-scatter
-    text: '{{catapults_scatter}}'
-    tooltip: '{{catapults_scatter_tooltip}}'
-    display: Number
-    contents:
-      type: integer
-      value: 100
-      min: 0
-      max: 100
-      step: 10
-- display: GroupBox
+    children:
+    - url: improved-siegeengines.catapults.on_the_way
+      name: improved-siegeengines-catapults-on-the-way
+      text: '{{catapults_on_the_way_details}}'
+      display: UCP2Switch
+      contents:
+        type: boolean
+        value: false
+      header: '{{catapults_on_the_way}}'
+    - url: improved-siegeengines.catapults.other_enemies
+      name: improved-siegeengines-catapults-other-enemies
+      text: '{{catapults_other_enemies_details}}'
+      display: UCP2Switch
+      contents:
+        type: boolean
+        value: false
+      header: '{{catapults_other_enemies}}'
   category:
   - '{{ai}}'
   - '{{improvements}}'
-  header: '{{tents_group}}'
-  text: '{{tents_group_details}}'
-  hasHeader: true
-  children:
-  - url: improved-siegeengines.tents.range
-    name: improved-siegeengines-tents-range
-    text: '{{tents_range_details}}'
-    display: UCP2Switch
-    contents:
-      type: boolean
-      value: false
-    header: '{{tents_range}}'
-  - url: improved-siegeengines.tents.variation
-    name: improved-siegeengines-tents-variation
-    text: '{{tents_variation}}'
-    tooltip: '{{tents_variation_tooltip}}'
-    display: Number
-    contents:
-      type: integer
-      value: 10
-      min: 0
-      max: 30
-      step: 1
-- display: GroupBox
-  category:
-  - '{{ai}}'
-  - '{{improvements}}'
-  header: '{{towers_group}}'
-  text: '{{towers_group_details}}'
-  hasHeader: true
-  children:
-  - url: improved-siegeengines.towers.orders
-    name: improved-siegeengines-towers-orders
-    text: '{{towers_orders_details}}'
-    display: UCP2Switch
-    contents:
-      type: boolean
-      value: false
-    header: '{{towers_orders}}'
-  - url: improved-siegeengines.towers.passenger_slow
-    name: improved-siegeengines-towers-passenger-slow
-    text: '{{towers_passenger_slow}}'
-    tooltip: '{{towers_passenger_slow_tooltip}}'
-    display: Switch
-    contents:
-      type: boolean
-      value: false
-  - url: improved-siegeengines.towers.passenger_lift
-    name: improved-siegeengines-towers-passenger-lift
-    text: '{{towers_passenger_lift}}'
-    tooltip: '{{towers_passenger_lift_tooltip}}'
-    display: Number
-    contents:
-      type: integer
-      value: 4
-      min: -40
-      max: 80
-      step: 2
-- display: GroupBox
-  category:
-  - '{{ai}}'
-  - '{{improvements}}'
-  header: '{{shields_group}}'
-  text: '{{shields_group_descr}}'
-  hasHeader: true
-  children:
-  - url: improved-siegeengines.shields.enabled
-    name: improved-siegeengines-shields-enabled
-    text: '{{shields_enabled_details}}'
-    display: UCP2Switch
-    contents:
-      type: boolean
-      value: false
-    header: '{{shields_enabled}}'
-- display: GroupBox
-  category:
-  - '{{balance_changes}}'
-  header: '{{oil_group}}'
-  text: '{{oil_group_details}}'
-  hasHeader: true
-  children:
-  - url: improved-siegeengines.oil.aim
-    name: improved-siegeengines-oil-aim
-    text: '{{oil_aim_details}}'
-    display: UCP2Switch
-    contents:
-      type: boolean
-      value: false
-    header: '{{oil_aim}}'
-  - url: improved-siegeengines.oil.spread
-    name: improved-siegeengines-oil-spread
-    text: '{{oil_spread_details}}'
-    display: UCP2Switch
-    contents:
-      type: boolean
-      value: false
-    header: '{{oil_spread}}'
-  - url: improved-siegeengines.oil.amount
-    name: improved-siegeengines-oil-amount
-    text: '{{oil_amount}}'
-    tooltip: '{{oil_amount_tooltip}}'
-    display: Number
-    contents:
-      type: integer
-      value: 41
-      min: 5
-      max: 200
-      step: 1
-  - url: improved-siegeengines.oil.damage
-    name: improved-siegeengines-oil-damage
-    text: '{{oil_damage_details}}'
-    display: UCP2Switch
-    contents:
-      type: boolean
-      value: false
-    header: '{{oil_damage}}'
-- display: GroupBox
-  category:
-  - '{{misc}}'
-  header: '{{diagnostics_group}}'
-  text: '{{diagnostics_group_descr}}'
-  hasHeader: true
-  children:
-  - url: improved-siegeengines.diagnostics.log
-    name: improved-siegeengines-diagnostics-log
-    text: '{{diagnostics_log_details}}'
-    display: UCP2Switch
-    contents:
-      type: boolean
-      value: false
-    header: '{{diagnostics_log}}'
 - url: improved-siegeengines.catapults.drop_destroyed
   name: improved-siegeengines-catapults-drop-destroyed
   text: '{{catapults_drop_destroyed_details}}'
@@ -190,6 +44,21 @@ options:
   category:
   - '{{ai}}'
   - '{{fixes}}'
+- display: GroupBox
+  hasHeader: true
+  header: '{{tents_group}}'
+  children:
+  - url: improved-siegeengines.tents.range
+    name: improved-siegeengines-tents-range
+    text: '{{tents_range_details}}'
+    display: UCP2Switch
+    contents:
+      type: boolean
+      value: false
+    header: '{{tents_range}}'
+  category:
+  - '{{ai}}'
+  - '{{improvements}}'
 - url: improved-siegeengines.tents.free
   name: improved-siegeengines-tents-free
   text: '{{tents_free_details}}'
@@ -212,6 +81,28 @@ options:
   category:
   - '{{ai}}'
   - '{{fixes}}'
+- url: improved-siegeengines.towers.orders
+  name: improved-siegeengines-towers-orders
+  text: '{{towers_orders_details}}'
+  display: UCP2Switch
+  contents:
+    type: boolean
+    value: false
+  header: '{{towers_orders}}'
+  category:
+  - '{{ai}}'
+  - '{{improvements}}'
+- url: improved-siegeengines.shields.enabled
+  name: improved-siegeengines-shields-enabled
+  text: '{{shields_enabled_details}}'
+  display: UCP2Switch
+  contents:
+    type: boolean
+    value: false
+  header: '{{shields_enabled}}'
+  category:
+  - '{{ai}}'
+  - '{{improvements}}'
 - url: improved-siegeengines.towers.dock
   name: improved-siegeengines-towers-dock
   text: '{{towers_dock_details}}'
@@ -222,23 +113,113 @@ options:
   header: '{{towers_dock}}'
   category:
   - '{{bugfixes}}'
-- url: improved-siegeengines.towers.passengers
-  name: improved-siegeengines-towers-passengers
-  text: '{{towers_passengers_details}}'
+- display: GroupBox
+  hasHeader: true
+  header: '{{towers_group}}'
+  children:
+  - url: improved-siegeengines.towers.passengers
+    name: improved-siegeengines-towers-passengers
+    text: '{{towers_passengers_details}}'
+    display: UCP2Switch
+    contents:
+      type: boolean
+      value: false
+    header: '{{towers_passengers}}'
+  - url: improved-siegeengines.towers.ai_passengers
+    name: improved-siegeengines-towers-ai-passengers
+    text: '{{towers_ai_passengers_details}}'
+    display: UCP2Switch
+    contents:
+      type: boolean
+      value: false
+    header: '{{towers_ai_passengers}}'
+  - url: improved-siegeengines.towers.passenger_slow
+    name: improved-siegeengines-towers-passenger-slow
+    display: UCP2Switch
+    contents:
+      type: boolean
+      value: false
+    header: '{{towers_passenger_slow}}'
+    text: '{{towers_passenger_slow_tooltip}}'
+  category:
+  - '{{balance_changes}}'
+- url: improved-siegeengines.oil.aim
+  name: improved-siegeengines-oil-aim
+  text: '{{oil_aim_details}}'
   display: UCP2Switch
   contents:
     type: boolean
     value: false
-  header: '{{towers_passengers}}'
+  header: '{{oil_aim}}'
+  category:
+  - '{{bugfixes}}'
+- display: GroupBox
+  hasHeader: true
+  header: '{{oil_group}}'
+  children:
+  - url: improved-siegeengines.oil.spread
+    name: improved-siegeengines-oil-spread
+    text: '{{oil_spread_details}}'
+    display: UCP2Switch
+    contents:
+      type: boolean
+      value: false
+    header: '{{oil_spread}}'
+    children:
+    - url: improved-siegeengines.oil.damage
+      name: improved-siegeengines-oil-damage
+      text: '{{oil_damage_details}}'
+      display: UCP2Switch
+      contents:
+        type: boolean
+        value: false
+      header: '{{oil_damage}}'
   category:
   - '{{balance_changes}}'
-- url: improved-siegeengines.towers.ai_passengers
-  name: improved-siegeengines-towers-ai-passengers
-  text: '{{towers_ai_passengers_details}}'
+- url: improved-siegeengines.catapults.scatter
+  name: improved-siegeengines-catapults-scatter
+  display: Number
+  contents:
+    type: integer
+    value: 100
+    min: 0
+    max: 100
+    step: 10
+  hidden: true
+- url: improved-siegeengines.tents.variation
+  name: improved-siegeengines-tents-variation
+  display: Number
+  contents:
+    type: integer
+    value: 10
+    min: 0
+    max: 30
+    step: 1
+  hidden: true
+- url: improved-siegeengines.towers.passenger_lift
+  name: improved-siegeengines-towers-passenger-lift
+  display: Number
+  contents:
+    type: integer
+    value: 4
+    min: -40
+    max: 80
+    step: 2
+  hidden: true
+- url: improved-siegeengines.oil.amount
+  name: improved-siegeengines-oil-amount
+  display: Number
+  contents:
+    type: integer
+    value: 41
+    min: 5
+    max: 200
+    step: 1
+  hidden: true
+- url: improved-siegeengines.diagnostics.log
+  name: improved-siegeengines-diagnostics-log
   display: UCP2Switch
   contents:
     type: boolean
     value: false
-  header: '{{towers_ai_passengers}}'
-  category:
-  - '{{balance_changes}}'
+  hidden: true

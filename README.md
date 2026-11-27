@@ -96,20 +96,29 @@ third of their health where the oil reaches them; walls, towers, gatehouses and 
 ## Configure the module
 
 1. Enable Improved Siegeengines and its Map Extensions dependency in UCP. Open
-   **Customizations** and find its options under **AI**, **Bugfixes**, **Balance Changes**
-   and **Miscellaneous**.
+   **Customizations** and find its options under **AI**, **Bugfixes** and **Balance Changes**.
 2. Choose the individual features, apply the configuration and restart the game. Click a
    setting title for details.
-3. For ranged AI engines, **Improved target search** enables the base targeting behaviour
-   used by **Stop and shoot on the way** and **Shoot at other enemies**. Dropping destroyed
+3. **Aim AI catapults and trebuchets at siege targets** enables the targeting used by
+   **Stop to fire on the way** and **Also fire at other enemies in range**. Dropping destroyed
    targets and reducing scatter have independent settings. Set scatter to 100% to use the
    original aim. The recommended setting is 50%. For comparison: the game lets a catapult rock land up
    to 12 tiles short (4 long) and 6 to the side, and a trebuchet up to 6 to the side, so at
    long range most shots hit open ground in front of the wall.
-4. To carry foot soldiers, enable **Foot soldiers ride on siege towers**, select soldiers
+4. To carry foot soldiers, enable **Carry troops on siege towers**, select soldiers
    and click one of your siege towers. Select the tower and use its leave command to unload
-   passengers first. A second leave command releases the engineers. AI boarding is a separate
-   option and requires the passenger feature. Passenger lift changes only the drawing height.
+   passengers first. A second leave command releases the engineers. AI boarding has its own
+   switch.
+
+Presets can set these options under `improved-siegeengines`:
+
+| Key | Default | Effect |
+| --- | ---: | --- |
+| `catapults.scatter` | 100 | AI shot scatter in percent. 0 removes scatter. |
+| `tents.variation` | 10 | Maximum distance short of firing range, in tiles. |
+| `towers.passenger_lift` | 4 | Passenger drawing height in pixels. |
+| `oil.amount` | 41 | Tiles covered by one pot when oil spreading is enabled. |
+| `diagnostics.log` | false | Log AI catapult and trebuchet targeting decisions. |
 
 Use Smarter Walls 1.0.16 or newer with this module. Smarter Walls used to do the diagonal
 docking; older versions change the same piece of the game and the two get in each other's way.
