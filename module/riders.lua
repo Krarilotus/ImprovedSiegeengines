@@ -1275,6 +1275,8 @@ T.drawVanish = [[
   cmp dword [UNITS + 0x64 + esi], 0
   jne .done
   mov edx, [UNITS + 0xD4 + esi]
+  cmp edx, TILES
+  jae .done
   test byte [TILEBITS + edx*2], 0x10
   jz .done
   push eax
