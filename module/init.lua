@@ -903,7 +903,6 @@ local function readCommon()
 end
 
 local function readSiege()
-  G.teams = rd32(scan(AOB_TEAMS, "the team table") + TEAMS_OPERAND)
   local cone = G.cone
   G.buildingOwner = operand(cone, CONE_OWNER, "the building owners")
   G.health = operand(cone, CONE_HEALTH, "the damageable buildings")
@@ -912,8 +911,6 @@ local function readSiege()
   end
   G.buildings = G.buildingType - B.TYPE
   G.buildingsState = G.buildings - B.STATE_OFFSET
-  G.range = rangeTable(scan(AOB_ACQUIRE, "the shooting code"))
-
   local command = G.command
   G.leaderOffset = operand(command, CMD_LEADER, "the troop leader") - G.tribes
   G.followOffset = operand(command, CMD_FOLLOW, "the shield link") - G.tribes
@@ -1330,14 +1327,24 @@ return {
 
     local state = {}
     if siege and try("siege engine changes", readSiege) then
-      state.catapults = O.catapults and try("catapults and trebuchets choosing targets", enableCatapults)
+      local teams = (O.catapults or O.freeSpots or O.tentRange or O.towerOrders or O.shields)
+        and try("team-dependent siege features", function()
+          G.teams = rd32(scan(AOB_TEAMS, "the team table") + TEAMS_OPERAND)
+        end)
+      local ranges = teams and (O.catapults or O.freeSpots or O.tentRange)
+        and try("range-dependent siege features", function()
+          G.range = rangeTable(scan(AOB_ACQUIRE, "the shooting code"))
+        end)
+      state.catapults = O.catapults and ranges
+        and try("catapults and trebuchets choosing targets", enableCatapults)
       state.walking = O.onTheWay and state.catapults and try("catapults and trebuchets shooting on the way",
         enableWalking)
       state.scatter = O.scatter < 100 and try("catapult and trebuchet scatter", enableScatter)
       state.standing = O.standing and try("siege engines dropping destroyed targets", enableStandingTargets)
-      state.tents = (O.freeSpots or O.tentRange) and try("siege tent placement", enableTents)
+      state.tents = (O.freeSpots or O.tentRange) and ranges and try("siege tent placement", enableTents)
       state.dock = O.dock and try("siege tower docking", enableDocking)
       state.oil = (O.oilAim or O.oilSpread) and try("the oil engineers", enableOil)
+      O.shields, O.towerOrders = O.shields and teams, O.towerOrders and teams
       state.commands = (O.towerOrders or O.shields or O.engineers)
         and try("shield, siege tower and engineer orders", enableCommands)
       wr32(G.data + 0x00, state.catapults and 1 or 0)
@@ -1384,7 +1391,8 @@ return {
       word(O.freeSpots, state.tents),
       word(O.tentRange, state.tents), O.variation,
       word(setting(config, "tents", "engineers"), state.engineers), word(O.dock, state.dock),
-      word(setting(config, "towers", "orders"), state.towers), word(O.shields, state.commands)))
+      word(setting(config, "towers", "orders"), state.towers), word(setting(config, "shields", "enabled"),
+        O.shields and state.commands)))
   end,
 
   disable = function(self, config)
