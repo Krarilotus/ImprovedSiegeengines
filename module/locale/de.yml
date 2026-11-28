@@ -40,3 +40,7 @@ towers_passenger_slow: Belagerungstürme ab fünf Mann verlangsamen
 towers_passenger_slow_tooltip: Ein Belagerungsturm wird langsamer, wenn er fünf oder mehr Soldaten trägt.
 towers_passengers: Truppen auf Belagerungstürmen befördern
 towers_passengers_details: Wähle Fußsoldaten und klicke zum Einsteigen auf einen verbündeten Belagerungsturm. Wähle zum Aussteigen den Turm und klicke ihn mit dem Aussteigen-Mauszeiger an.
+cat_siege_crews: Belagerungstrupps und Gerät
+cat_siege_digging: Belagerungsgerät und Graben
+cat_siege_sapping: Belagerung und Untergraben
+cat_siege_targeting: Belagerung und Zielwahl

@@ -40,3 +40,7 @@ towers_passengers: Carry troops on siege towers
 towers_passengers_details: Click a friendly tower with foot soldiers selected to board, or select the tower and click it with the leave-engine cursor to dismount.
 towers_passenger_slow: Slow towers carrying five or more
 towers_passenger_slow_tooltip: A siege tower slows down when it carries five or more troops.
+cat_siege_crews: Siege crews and equipment
+cat_siege_digging: Siege equipment and digging
+cat_siege_sapping: Siege and sapping
+cat_siege_targeting: Siege and targeting

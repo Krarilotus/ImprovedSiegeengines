@@ -40,3 +40,7 @@ towers_passenger_slow: Ralentir les tours portant cinq soldats ou plus
 towers_passenger_slow_tooltip: Une tour de siège ralentit lorsqu’elle transporte cinq soldats ou plus.
 towers_passengers: Transporter des troupes dans les tours de siège
 towers_passengers_details: Sélectionnez des fantassins et cliquez sur une tour de siège alliée pour les faire monter. Pour les faire descendre, sélectionnez la tour et cliquez dessus avec le curseur de sortie.
+cat_siege_crews: Équipes et engins de siège
+cat_siege_digging: Engins de siège et creusement
+cat_siege_sapping: Siège et sape
+cat_siege_targeting: Siège et ciblage

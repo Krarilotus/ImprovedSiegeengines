@@ -40,3 +40,7 @@ towers_passenger_slow: Öt vagy több utassal a tornyok lassuljanak
 towers_passenger_slow_tooltip: Az ostromtorony lelassul, ha öt vagy több katonát szállít.
 towers_passengers: Csapatok szállítása ostromtornyokban
 towers_passengers_details: A beszálláshoz jelöld ki a gyalogosokat, majd kattints egy baráti ostromtoronyra. A kiszálláshoz jelöld ki a tornyot, és a kiszállást jelző kurzorral kattints rá.
+cat_siege_crews: Ostromlegénység és -felszerelés
+cat_siege_digging: Ostromgépek és ásás
+cat_siege_sapping: Ostrom és aláaknázás
+cat_siege_targeting: Ostrom és célpontválasztás

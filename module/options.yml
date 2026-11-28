@@ -33,6 +33,7 @@ options:
   category:
   - '{{ai}}'
   - '{{improvements}}'
+  - '{{cat_siege_crews}}'
 - url: improved-siegeengines.catapults.drop_destroyed
   name: improved-siegeengines-catapults-drop-destroyed
   text: '{{catapults_drop_destroyed_details}}'
@@ -44,6 +45,7 @@ options:
   category:
   - '{{ai}}'
   - '{{fixes}}'
+  - '{{cat_siege_targeting}}'
 - display: GroupBox
   hasHeader: true
   header: '{{tents_group}}'
@@ -59,6 +61,7 @@ options:
   category:
   - '{{ai}}'
   - '{{improvements}}'
+  - '{{cat_siege_crews}}'
 - url: improved-siegeengines.tents.free
   name: improved-siegeengines-tents-free
   text: '{{tents_free_details}}'
@@ -70,6 +73,7 @@ options:
   category:
   - '{{ai}}'
   - '{{fixes}}'
+  - '{{cat_siege_targeting}}'
 - url: improved-siegeengines.tents.engineers
   name: improved-siegeengines-tents-engineers
   text: '{{tents_engineers_details}}'
@@ -81,6 +85,7 @@ options:
   category:
   - '{{ai}}'
   - '{{fixes}}'
+  - '{{cat_siege_targeting}}'
 - url: improved-siegeengines.towers.orders
   name: improved-siegeengines-towers-orders
   text: '{{towers_orders_details}}'
@@ -92,6 +97,7 @@ options:
   category:
   - '{{ai}}'
   - '{{improvements}}'
+  - '{{cat_siege_crews}}'
 - url: improved-siegeengines.shields.enabled
   name: improved-siegeengines-shields-enabled
   text: '{{shields_enabled_details}}'
@@ -103,6 +109,7 @@ options:
   category:
   - '{{ai}}'
   - '{{improvements}}'
+  - '{{cat_siege_crews}}'
 - url: improved-siegeengines.towers.dock
   name: improved-siegeengines-towers-dock
   text: '{{towers_dock_details}}'
@@ -113,6 +120,7 @@ options:
   header: '{{towers_dock}}'
   category:
   - '{{bugfixes}}'
+  - '{{cat_siege_digging}}'
 - display: GroupBox
   hasHeader: true
   header: '{{towers_group}}'
@@ -143,6 +151,7 @@ options:
     text: '{{towers_passenger_slow_tooltip}}'
   category:
   - '{{balance_changes}}'
+  - '{{cat_siege_sapping}}'
 - url: improved-siegeengines.oil.aim
   name: improved-siegeengines-oil-aim
   text: '{{oil_aim_details}}'
@@ -153,6 +162,7 @@ options:
   header: '{{oil_aim}}'
   category:
   - '{{bugfixes}}'
+  - '{{cat_siege_digging}}'
 - display: GroupBox
   hasHeader: true
   header: '{{oil_group}}'
@@ -176,6 +186,7 @@ options:
       header: '{{oil_damage}}'
   category:
   - '{{balance_changes}}'
+  - '{{cat_siege_sapping}}'
 - url: improved-siegeengines.catapults.scatter
   name: improved-siegeengines-catapults-scatter
   display: Number

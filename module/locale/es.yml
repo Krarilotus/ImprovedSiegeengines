@@ -40,3 +40,7 @@ towers_passenger_slow: Ralentizar torres que lleven cinco o más
 towers_passenger_slow_tooltip: Una torre de asedio se vuelve más lenta cuando lleva cinco o más tropas.
 towers_passengers: Llevar tropas en torres de asedio
 towers_passengers_details: Selecciona infantería y haz clic en una torre de asedio aliada para subirla. Para bajarla, selecciona la torre y haz clic en ella con el cursor de salida.
+cat_siege_crews: Dotaciones y equipo de asedio
+cat_siege_digging: Equipo de asedio y excavación
+cat_siege_sapping: Asedio y zapa
+cat_siege_targeting: Asedio y objetivos

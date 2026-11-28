@@ -40,3 +40,7 @@ towers_passenger_slow: 搭载五名及以上乘员时减速
 towers_passenger_slow_tooltip: 攻城塔搭载五名及以上部队时移动速度会变慢。
 towers_passengers: 在攻城塔上搭载部队
 towers_passengers_details: 选中步兵点击友方攻城塔即可登塔；选中攻城塔并以离开器械光标点击它即可下塔。
+cat_siege_crews: 攻城人员与器械
+cat_siege_digging: 攻城器械与挖掘
+cat_siege_sapping: 攻城与挖掘
+cat_siege_targeting: 攻城与目标

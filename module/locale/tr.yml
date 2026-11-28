@@ -40,3 +40,7 @@ towers_passenger_slow: Beş veya daha fazla birlik taşıyan kuleleri yavaşlat
 towers_passenger_slow_tooltip: Bir kuşatma kulesi beş veya daha fazla birlik taşıdığında yavaşlar.
 towers_passengers: Kuşatma kulelerinde birlik taşı
 towers_passengers_details: Piyadeleri bindirmek için onları seçip dost bir kuşatma kulesine tıklayın. İndirmek için kuleyi seçip araçtan inme imleciyle kuleye tıklayın.
+cat_siege_crews: Kuşatma ekipleri ve donanımı
+cat_siege_digging: Kuşatma donanımı ve kazı
+cat_siege_sapping: Kuşatma ve lağım
+cat_siege_targeting: Kuşatma ve hedefleme
