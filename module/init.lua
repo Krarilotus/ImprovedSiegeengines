@@ -308,8 +308,8 @@ local function wr16(address, value) core.writeSmallInteger(address, value & 0xFF
 local function byte(address) return core.readByte(address) & 0xFF end
 
 local function scan(pattern, purpose)
-  local address, reason = core.AOBScanUnique(pattern)
-  if not address or reason then error(purpose .. ": " .. tostring(reason), 0) end
+  local found, address = pcall(core.AOBScan, pattern)
+  if not found then error(purpose .. ": not found", 0) end
   return address
 end
 
